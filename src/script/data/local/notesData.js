@@ -105,3 +105,10 @@ const notesData = [
         archived: false,
     },
 ];
+
+
+class Notes{
+    static getAll(){
+        return notesData;
+    }
+}
