@@ -9,6 +9,8 @@ body{
     font-family: "Inter", sans-serif;
 }
 
-header{
-    display: block;
+
+main{
+    display: flex;
+    flex-direction: column;
 }

@@ -8,8 +8,6 @@ class AppBar extends HTMLElement {
         super();
 
         this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._color = this.getAttribute('color') ?? '#343434';
-        this._backgroundColor = this.getAttribute('background-color') ?? '#CAF4FF';
         this._style = document.createElement('style');
     }
 
@@ -19,27 +17,19 @@ class AppBar extends HTMLElement {
 
     _updateStyle() {
         this._style.textContent = `
-            :host{
-                display: block;
-                width: 100%;
-                position: fixed;
-                z-index: 6;
-                border-bottom: 1px solid #dcdcdc;
-                color: ${this._color};
-                background-color: ${this._backgroundColor};
+            :host {
+                display: block;              
+                background-color: #FFF9D0;
+                color: #28282b;
             }
 
-            div{
-                display: flex;
-                padding: 5px 40px 5px 40px;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                
+            nav {
+                padding: 10px 80px;
             }
 
-            h1{
-                font-size: clamp(24px, 4vw, 32px);
+            p{
+                font-weight: bold;
+                font-size: 2.4rem;
             }
 
         `;
@@ -54,9 +44,9 @@ class AppBar extends HTMLElement {
         
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
-            <div>
-                <h1>My Note App</h1>
-            </div>
+            <nav>
+                <p>My Note App</p>
+            </nav>
         `;
     }
 
