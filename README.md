@@ -5,4 +5,4 @@
 Dicoding Class Module - Belajar Fundamental Front-End Web Development  
 
 Project Awal  
-Progress Kelas: *50%*
+Progress Kelas: 50% Selesai
