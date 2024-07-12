@@ -8,7 +8,7 @@ class AppBar extends HTMLElement {
         super();
 
         this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._color = this.getAttribute('color') ?? '#000';
+        this._color = this.getAttribute('color') ?? '#343434';
         this._backgroundColor = this.getAttribute('background-color') ?? '#CAF4FF';
         this._style = document.createElement('style');
     }
@@ -34,8 +34,8 @@ class AppBar extends HTMLElement {
                 padding: 5px 40px 5px 40px;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-between;
-                background-color: ${this.getAttribute('background-color')};
+                justify-content: center;
+                
             }
 
             h1{
