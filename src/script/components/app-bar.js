@@ -2,7 +2,6 @@ class AppBar extends HTMLElement {
     _shadowRoot = null;
     _style = null;
 
-    static observedAttributes = ['background-color', 'color'];
 
     constructor() {
         super();
@@ -27,9 +26,8 @@ class AppBar extends HTMLElement {
                 padding: 10px 80px;
             }
 
-            p{
-                font-weight: bold;
-                font-size: 2.4rem;
+            .logo-brand{
+                font-size: 1.4rem;
             }
 
         `;
@@ -45,7 +43,7 @@ class AppBar extends HTMLElement {
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
             <nav>
-                <p>My Note App</p>
+                <h1 class="logo-brand">Note-ku</h1>
             </nav>
         `;
     }
