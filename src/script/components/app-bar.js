@@ -18,8 +18,8 @@ class AppBar extends HTMLElement {
         this._style.textContent = `
             :host {
                 display: block;              
-                background-color: #FFF9D0;
-                color: #28282b;
+                background-color: #FFDE4D;
+                color: #18182a;
             }
 
             nav {
@@ -27,7 +27,7 @@ class AppBar extends HTMLElement {
             }
 
             .logo-brand{
-                font-size: 1.4rem;
+                font-size: 3.4rem;
             }
 
         `;

@@ -13,8 +13,11 @@ body{
 main{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 60px;
 }
 
 footer{
-    background-color: #FFF9D0;
+    background-color: #FFDE4D;
 }

@@ -29,12 +29,12 @@ class FooterBar extends HTMLElement {
         .brand-footer {
             font-size: 30px;
             font-weight: 700;
-            color: #28282b;        
+            color: #18182a;        
         }
             
         .second-footer {
             font-size: 11px;
-            color: #28282b;
+            color: #18182a;
         }
         `;
     }
