@@ -48,14 +48,6 @@ class AppBar extends HTMLElement {
         `;
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue === newValue) {
-            return;
-        } else {
-            this[`_${name}`] = newValue;
-            this.render();
-        }
-    }
 }
 
 customElements.define('app-bar', AppBar);
