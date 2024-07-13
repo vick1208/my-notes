@@ -19,7 +19,7 @@ class FooterBar extends HTMLElement {
         :host{
             display: block;
         }
-        div.container {
+        .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -27,15 +27,30 @@ class FooterBar extends HTMLElement {
         }
     
         .brand-footer {
-            font-size: 30px;
+            font-size: 1rem;
             font-weight: 700;
             color: #18182a;        
         }
             
         .second-footer {
-            font-size: 11px;
+            font-size: 0.5rem;
             color: #18182a;
         }
+
+        @media screen and (min-width: 640px){
+
+        .brand-footer {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #18182a;        
+        }
+            
+        .second-footer {
+            font-size: 1rem;
+            color: #18182a;
+        }
+            
+            }
         `;
     }
 
