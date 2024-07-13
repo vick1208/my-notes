@@ -23,7 +23,7 @@ class FooterBar extends HTMLElement {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 62px;
+            padding: 20px 42px;
         }
     
         .brand-footer {
@@ -38,6 +38,12 @@ class FooterBar extends HTMLElement {
         }
 
         @media screen and (min-width: 640px){
+
+
+        .container {
+            padding: 30px 62px;
+            
+        }
 
         .brand-footer {
             font-size: 2rem;

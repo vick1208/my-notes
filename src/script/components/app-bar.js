@@ -23,7 +23,7 @@ class AppBar extends HTMLElement {
             }
 
             nav {
-                padding: 10px 80px;
+                padding: 5px 50px;
             }
 
             .logo-brand{
@@ -32,7 +32,9 @@ class AppBar extends HTMLElement {
 
 
             @media screen and (min-width: 640px){
-
+            nav {
+                padding: 10px 80px;
+            }
                 .logo-brand{
                     font-size:3.4rem;
                 
@@ -49,7 +51,7 @@ class AppBar extends HTMLElement {
     render() {
         this._emptyContent();
         this._updateStyle();
-        
+
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
             <nav>
