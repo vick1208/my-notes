@@ -18,7 +18,7 @@ class AppBar extends HTMLElement {
         this._style.textContent = `
             :host {
                 display: block;              
-                background-color: #FFDE4D;
+                background-color: #F3FEB8;
                 color: #18182a;
             }
 
@@ -27,7 +27,7 @@ class AppBar extends HTMLElement {
             }
 
             .logo-brand{
-                font-size: 2rem;
+                font-size: 18px;
             }
 
 
@@ -36,7 +36,7 @@ class AppBar extends HTMLElement {
                 padding: 10px 80px;
             }
                 .logo-brand{
-                    font-size:3.4rem;
+                    font-size:1.5rem;
                 
                 }
             
@@ -55,7 +55,7 @@ class AppBar extends HTMLElement {
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
             <nav>
-                <h1 class="logo-brand">Note-ku</h1>
+                <h1 class="logo-brand">Note Pribadi</h1>
             </nav>
         `;
     }

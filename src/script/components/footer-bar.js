@@ -33,7 +33,7 @@ class FooterBar extends HTMLElement {
         }
             
         .second-footer {
-            font-size: 0.5rem;
+            font-size: 12px;
             color: #18182a;
         }
 
@@ -46,13 +46,13 @@ class FooterBar extends HTMLElement {
         }
 
         .brand-footer {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #18182a;        
         }
             
         .second-footer {
-            font-size: 1rem;
+            font-size: 14px;
             color: #18182a;
         }
             
@@ -74,7 +74,7 @@ class FooterBar extends HTMLElement {
         
 
         <div class="container">
-            <div class="brand-footer">Note-ku</div>
+            <div class="brand-footer">Note Pribadi</div>
             <div class="second-footer">Dicoding Project Notes &copy; 2024 Vicky </div>
         </div>
 
