@@ -69,13 +69,14 @@ class FooterBar extends HTMLElement {
         this._emptyContent();
         this._updateStyle();
 
+        const currentYear = new Date().getFullYear();
+
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
         
-
         <div class="container">
             <div class="brand-footer">Note Pribadi</div>
-            <div class="second-footer">Dicoding Project Notes &copy; 2024 Vicky </div>
+            <div class="second-footer">Dicoding Project Notes &copy; ${currentYear} Vicky </div>
         </div>
 
         `;
