@@ -73,10 +73,10 @@ class FooterBar extends HTMLElement {
 
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
-        
+
         <div class="container">
             <div class="brand-footer">Note Pribadi</div>
-            <div class="second-footer">Dicoding Project Notes &copy; ${currentYear} Vicky </div>
+            <div class="second-footer">Dicoding Project &copy; ${currentYear} Vicky </div>
         </div>
 
         `;
