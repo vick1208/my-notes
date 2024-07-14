@@ -19,7 +19,8 @@ main{
 }
 
 .form-section{
-    margin: 15px 320px;
+    margin: 15px 32px;
+    border: 2px solid red;
 }
 
 .form-section h2{
