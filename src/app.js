@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     home();
     loadNoteData();
     setFormListener();
-
-
 });
 
 
