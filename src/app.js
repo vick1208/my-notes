@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// // ===================== Add Note to Local Storage ==========================
 
 // function setFormListener() {
 //     const notesForm = document.getElementById('notesForm');
