@@ -17,11 +17,14 @@ class NoteList extends HTMLElement {
         this._style.textContent = `
         
         :host{
-        
-        
-        
+            display: block;
         }
         
+        div.note-list{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
 
         `;
     }
@@ -34,8 +37,11 @@ class NoteList extends HTMLElement {
         this._emptyContent();
         this._updateStyle();
         this._shadowRoot.appendChild(this._style);
-        this._shadowRoot.innerHTML = ``;
-
+        this._shadowRoot.innerHTML += `
+            <div class="note-list">
+                <slot></slot>
+            </div>
+        `;
     }
 }
 
