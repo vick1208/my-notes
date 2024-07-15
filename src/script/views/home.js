@@ -32,18 +32,6 @@ function home() {
 
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
     const showPersonalNote = () => {
         const result = NotesData.getAll();
         displayResult(result);
