@@ -22,25 +22,15 @@ class AppBar extends HTMLElement {
                 color: #18182a;
             }
 
-            nav {
-                padding: 5px 50px;
+            div {
+                padding: 8px 60px;
             }
 
             .logo-brand{
-                font-size: 18px;
+                font-size: 2rem;
             }
 
 
-            @media screen and (min-width: 640px){
-            nav {
-                padding: 10px 80px;
-            }
-                .logo-brand{
-                    font-size:1.5rem;
-                
-                }
-            
-            }
 
         `;
     }
@@ -54,9 +44,9 @@ class AppBar extends HTMLElement {
 
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
-            <nav>
+            <div>
                 <h1 class="logo-brand">Note Pribadi</h1>
-            </nav>
+            </div>
         `;
     }
 

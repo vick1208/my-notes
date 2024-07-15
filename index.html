@@ -25,15 +25,15 @@
                 <h2>Catatan Baru</h2>
                 <form action="#" class="notes-form" id="notesForm">
                     <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input type="text" name="title" id="title">
+                        <label for="title">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
+                        <input type="text" name="title" id="title" required>
                     </div>
                     <div class="form-group">
-                        <label for="note">Catatan</label>
-                        <textarea name="note" id="note"></textarea>
+                        <label for="noteBody">Catatan</label>
+                        <textarea name="noteBody" id="noteBody" cols="20" rows="8"></textarea>
                     </div>
                     <div class="form-button">
-                        <button type="submit">Tambah</button>
+                        <button type="submit" id="saveBtn">Tambah</button>
                     </div>
                 </form>
             </section>
