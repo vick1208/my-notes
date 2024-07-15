@@ -1,0 +1,3 @@
+class NoteItem extends HTMLElement{
+    
+}
