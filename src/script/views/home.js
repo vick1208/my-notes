@@ -34,7 +34,7 @@ function home() {
         const result = NotesData.getAll();
         displayResult(result);
 
-        showNoteList();
+        // showNoteList();
     }
 
     function displayResult(notes) {
@@ -48,71 +48,68 @@ function home() {
         noteListElement.append(...noteItemElements);
     }
 
-    function showNoteList() {
-        Array.from(noteListContainerElement.children).forEach((element) => {
-            Utils.hideElement(element);
-        });
-        Utils.showElement(noteListElement);
-    }
+    // function showNoteList() {
+    //     Array.from(noteListContainerElement.children).forEach((element) => {
+    //         Utils.hideElement(element);
+    //     });
+    //     Utils.showElement(noteListElement);
+    // }
+
+
 
     showPersonalNote();
 
-    loadNoteData();
-    setNoteFormListener();
+    
 
-
-    saveBtn.addEventListener('click', function () {
-        location.reload();
-
-    });
+    
 }
 
-function setNoteFormListener() {
-    const notesForm = document.getElementById('notesForm');
+// function setNoteFormListener() {
+//     const notesForm = document.getElementById('notesForm');
 
-    notesForm.addEventListener('submit', (event) => {
-        event.preventDefault();
+//     notesForm.addEventListener('submit', (event) => {
+//         event.preventDefault();
 
-        const noteTitle = document.getElementById('noteTitle').value;
-        const noteDesc = document.getElementById('noteBody').value;
+//         const noteTitle = document.getElementById('noteTitle').value;
+//         const noteDesc = document.getElementById('noteBody').value;
 
-        const note = {
-            id: generateUniqueId(),
-            title: noteTitle,
-            body: noteDesc,
-            createdAt: new Date().toISOString(),
-            archived: false,
-        }
+//         const note = {
+//             id: generateUniqueId(),
+//             title: noteTitle,
+//             body: noteDesc,
+//             createdAt: new Date().toISOString(),
+//             archived: false,
+//         }
 
-        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+//         let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-        notes.push(note);
+//         notes.push(note);
 
-        localStorage.setItem('notes', JSON.stringify(notes))
+//         localStorage.setItem('notes', JSON.stringify(notes))
 
-        this.reset();
+//         this.reset();
 
-        loadNoteData();
-    });
-}
+//         loadNoteData();
+//     });
+// }
 
-function generateUniqueId() {
-    const timestamp = Date.now().toString();
-    const randomString = Math.random().toString(36).substring(2, 8);
+// function generateUniqueId() {
+//     const timestamp = Date.now().toString();
+//     const randomString = Math.random().toString(36).substring(2, 8);
 
-    return `notes-${randomString}-${timestamp}`;
-}
+//     return `notes-${randomString}-${timestamp}`;
+// }
 
 
-function loadNoteData() {
-    const noteListElement = document.querySelector('note-list');
-    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+// function loadNoteData() {
+//     const noteListElement = document.querySelector('note-list');
+//     const notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-    notes.forEach((note) => {
-        const noteItemElement = document.createElement('note-item');
-        noteItemElement.note = note;
-        noteListElement.append(noteItemElement);
-    });
-}
+//     notes.forEach((note) => {
+//         const noteItemElement = document.createElement('note-item');
+//         noteItemElement.note = note;
+//         noteListElement.append(noteItemElement);
+//     });
+// }
 
 export default home;
