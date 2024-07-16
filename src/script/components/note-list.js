@@ -22,8 +22,15 @@ class NoteList extends HTMLElement {
         
         div.note-list{
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: 1fr;
+            gap: 9px;
+        }
+
+        @media(min-width: 640px){
+            div.note-list{
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
         }
 
         `;

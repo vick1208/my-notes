@@ -77,7 +77,7 @@ button#saveBtn:hover {
 
 section.note{
     align-self: self-start;
-    margin: 30px;
+    margin: 10px;
 }
 
 section.note .title-notes>h2{
