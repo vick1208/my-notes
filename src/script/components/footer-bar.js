@@ -27,7 +27,7 @@ class FooterBar extends HTMLElement {
         }
     
         .brand-footer {
-            font-size: 1rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #18182a;        
         }
@@ -46,14 +46,11 @@ class FooterBar extends HTMLElement {
         }
 
         .brand-footer {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #18182a;        
+            font-size: 2.5rem;       
         }
             
         .second-footer {
             font-size: 14px;
-            color: #18182a;
         }
             
             }

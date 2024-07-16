@@ -30,7 +30,11 @@ class AppBar extends HTMLElement {
                 font-size: 2rem;
             }
 
-
+            @media (min-width: 640px){
+                .logo-brand{
+                    font-size: 3.4rem;
+                }
+            }
 
         `;
     }

@@ -22,7 +22,7 @@ class NoteList extends HTMLElement {
         
         div.note-list{
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: auto-fit;
             gap: 9px;
         }
 

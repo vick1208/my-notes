@@ -40,9 +40,9 @@ class NoteItem extends HTMLElement {
 
         div.card{
             height: 150px;
-            padding: 24px;
+            padding: 50px;
             border-radius: 12px;
-            box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
             overflow: hidden;
 
         }
@@ -54,7 +54,7 @@ class NoteItem extends HTMLElement {
         }
 
         div#noteDesc {
-            margin-top: 12px;
+            margin-top: 2px;
             font-size: 15px;
             color: #77B0BB;
         }
