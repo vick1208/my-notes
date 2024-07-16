@@ -6,13 +6,29 @@ function home() {
     const noteListContainerElement = document.querySelector('#noteListContainer');
     const noteListElement = noteListContainerElement.querySelector('note-list');
     const form = document.querySelector('.notes-form');
+    const titleInput = form.elements.noteTitle;
+    const bodyInput = form.elements.noteBody;
     const saveBtn = document.getElementById('saveBtn');
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+    form.addEventListener('submit', (event) => event.preventDefault());
 
+    titleInput.addEventListener('invalid', (event) => {
+        event.target.setCustomValidity('');
+
+        if (!event.target.validity.valid) {
+            event.target.setCustomValidity('Wajib diisi.');
+            return;
+        };
     });
 
+    bodyInput.addEventListener('invalid',(event) => {
+        event.target.setCustomValidity('');
+
+        if (!event.target.validity.valid) {
+            event.target.setCustomValidity('Wajib diisi.');
+            return;
+        };
+    });
 
     const showPersonalNote = () => {
         const result = NotesData.getAll();
