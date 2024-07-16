@@ -38,13 +38,11 @@ div.form-group {
     margin-top: 12px;
 }
 
-div.form-group :required{
-    border-color: #416D19;
-}
+
 
 div.form-group input,
 textarea {
-    border: 1px solid #BFEA7C;
+    border: 1px solid #416D19;
     border-radius: 8px;
     padding: 12px;
 }
@@ -62,7 +60,7 @@ button#saveBtn {
     padding: 14px 16px;
     background-color: #9BCF53;
     border: 0;
-    border-radius: 8px;
+    border-radius: 12px;
     color: white;
     font-weight: bold;
     cursor: pointer;
