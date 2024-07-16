@@ -6,31 +6,34 @@ function home() {
     const noteListContainerElement = document.querySelector('#noteListContainer');
     const noteListElement = noteListContainerElement.querySelector('note-list');
     const form = document.querySelector('.notes-form');
-    const titleInput = form.elements.noteTitle;
-    const bodyInput = form.elements.noteBody;
-    const saveBtn = document.getElementById('saveBtn')
+    // const titleInput = form.elements.noteTitle;
+    // const bodyInput = form.elements.noteBody;
+    const saveBtn = document.getElementById('saveBtn');
 
-    form.addEventListener('submit', (event) => event.preventDefault);
-
-    titleInput.addEventListener('invalid', (event) => {
-        event.target.setCustomValidity('');
-
-        if (!event.target.validity.valid) {
-            event.target.setCustomValidity('Judul wajib untuk diisi.');
-            return;
-        }
+    form.addEventListener('submit', (event) =>{ 
+        event.preventDefault()
 
     });
 
-    bodyInput.addEventListener('invalid', (event) => {
-        event.target.setCustomValidity('');
+    // titleInput.addEventListener('invalid', (event) => {
+    //     event.target.setCustomValidity('');
 
-        if (!event.target.validity.valid) {
-            event.target.setCustomValidity('Isi catatan wajib untuk diisi.');
-            return;
-        }
+    //     if (!event.target.validity.valid) {
+    //         event.target.setCustomValidity('Judul wajib untuk diisi.');
+    //         return;
+    //     }
 
-    });
+    // });
+
+    // bodyInput.addEventListener('invalid', (event) => {
+    //     event.target.setCustomValidity('');
+
+    //     if (!event.target.validity.valid) {
+    //         event.target.setCustomValidity('Isi catatan wajib untuk diisi.');
+    //         return;
+    //     }
+
+    // });
 
     const showPersonalNote = () => {
         const result = NotesData.getAll();
@@ -58,9 +61,10 @@ function home() {
     }
 
     showPersonalNote();
-
+    
     loadNoteData();
-    setFormListener();
+    setNoteFormListener();
+    
 
     saveBtn.addEventListener('click', function () {
         location.reload();
@@ -68,7 +72,7 @@ function home() {
     });
 }
 
-function setFormListener() {
+function setNoteFormListener() {
     const notesForm = document.getElementById('notesForm');
 
     notesForm.addEventListener('submit', (e) => {
@@ -101,7 +105,7 @@ function generateUniqueId() {
     const timestamp = Date.now().toString();
     const randomString = Math.random().toString(36).substring(2, 8);
 
-    return `notes-${timestamp}-${randomString}`;
+    return `notes-${randomString}-${timestamp}`;
 }
 
 
