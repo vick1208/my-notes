@@ -30,6 +30,7 @@ function home() {
         });
         Utils.showElement(noteListElement);
     }
+    
     showPersonalNote();
 }
 

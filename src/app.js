@@ -1,16 +1,14 @@
+import './script/components/index.js'
 
-import './script/components/index.js';
-
-import home from './script/views/home.js'
-
+import home from './script/views/home.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     home();
     loadNoteData();
     setNoteFormListener();
 
+    
 });
-
 
 const form = document.querySelector('.notes-form');
 const titleInput = form.elements.noteTitle;
@@ -18,20 +16,20 @@ const bodyInput = form.elements.noteBody;
 
 form.addEventListener('submit', (event) => event.preventDefault());
 
-titleInput.addEventListener('invalid', (event) => {
-    event.target.setCustomValidity('');
+titleInput.addEventListener('invalid', (e) => {
+    e.target.setCustomValidity('');
 
-    if (!event.target.validity.valid) {
-        event.target.setCustomValidity('Wajib diisi.');
+    if (!e.target.validity.valid) {
+        e.target.setCustomValidity('Wajib diisi.');
         return;
     };
 });
 
-bodyInput.addEventListener('invalid', (event) => {
-    event.target.setCustomValidity('');
+bodyInput.addEventListener('invalid', (e) => {
+    e.target.setCustomValidity('');
 
-    if (!event.target.validity.valid) {
-        event.target.setCustomValidity('Wajib diisi.');
+    if (!e.target.validity.valid) {
+        e.target.setCustomValidity('Wajib diisi.');
         return;
     };
 });
@@ -44,11 +42,12 @@ function setNoteFormListener() {
         event.preventDefault();
 
         const noteTitle = document.getElementById('noteTitle').value;
-        const noteDesc = document.getElementById('noteBody').value;
+        const noteBody = document.getElementById('noteBody').value;
+
         const note = {
             id: generateUniqueId(),
             title: noteTitle,
-            body: noteDesc,
+            body: noteBody,
             createdAt: new Date().toISOString(),
             archived: false,
         }
@@ -72,19 +71,22 @@ function generateUniqueId() {
     return `notes-${randomString}-${timestamp}`;
 }
 
-
 function loadNoteData() {
     const noteListElement = document.querySelector('note-list');
+
+
     const notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-    notes.forEach((note) => {
+    notes.forEach(note => {
         const noteItemElement = document.createElement('note-item');
         noteItemElement.note = note;
         noteListElement.append(noteItemElement);
     });
 }
 
-const saveBtn = document.getElementById('saveBtn');
-saveBtn.addEventListener('click', function () { 
-    location.reload(); 
+
+
+const saveBtn = document.getElementById('saveBtn')
+saveBtn.addEventListener('click', function () {
+    location.reload();
 });
