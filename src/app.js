@@ -10,29 +10,29 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-const form = document.querySelector('.notes-form');
-const titleInput = form.elements.noteTitle;
-const bodyInput = form.elements.noteBody;
+// const form = document.querySelector('.notes-form');
+// const titleInput = form.elements.noteTitle;
+// const bodyInput = form.elements.noteBody;
 
-form.addEventListener('submit', (event) => event.preventDefault());
+// form.addEventListener('submit', (event) => event.preventDefault());
 
-titleInput.addEventListener('invalid', (e) => {
-    e.target.setCustomValidity('');
+// titleInput.addEventListener('invalid', (e) => {
+//     e.target.setCustomValidity('');
 
-    if (!e.target.validity.valid) {
-        e.target.setCustomValidity('Wajib diisi.');
-        return;
-    };
-});
+//     if (!e.target.validity.valid) {
+//         e.target.setCustomValidity('Wajib diisi.');
+//         return;
+//     };
+// });
 
-bodyInput.addEventListener('invalid', (e) => {
-    e.target.setCustomValidity('');
+// bodyInput.addEventListener('invalid', (e) => {
+//     e.target.setCustomValidity('');
 
-    if (!e.target.validity.valid) {
-        e.target.setCustomValidity('Wajib diisi.');
-        return;
-    };
-});
+//     if (!e.target.validity.valid) {
+//         e.target.setCustomValidity('Wajib diisi.');
+//         return;
+//     };
+// });
 
 
 function setNoteFormListener() {
