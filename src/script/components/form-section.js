@@ -84,11 +84,11 @@ button#saveBtn:hover {
                 <form action="#" class="notes-form" id="notesForm">
                     <div class="form-group">
                         <label for="noteTitle">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
-                        <input type="text" name="noteTitle" id="noteTitle" required/>
+                        <input type="text" name="noteTitle" id="noteTitle" autocomplete="off" required/>
                     </div>
                     <div class="form-group">
                         <label for="noteBody">Catatan</label>
-                        <textarea name="noteBody" id="noteBody" cols="20" rows="8" autocomplete="off">
+                        <textarea name="noteBody" id="noteBody" cols="20" rows="8" >
 
                         </textarea>
                     </div>
