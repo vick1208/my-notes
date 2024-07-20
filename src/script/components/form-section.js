@@ -2,10 +2,14 @@ class FormSection extends HTMLElement {
     _shadowRoot = null;
     _style = null;
 
+    static observedAttributes = ['title-content'];
+
     constructor() {
         super();
         this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._style = document.createElement('style');
+
+        this._titleContent = this.getAttribute('title-content');
     }
 
     _updateStyle(){
@@ -80,7 +84,7 @@ button#saveBtn:hover {
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML +=`
         <section class="form-section">
-                <h2>Catatan Baru</h2>
+                <h2> ${this._titleContent} </h2>
                 <form action="#" class="notes-form" id="notesForm">
                     <div class="form-group">
                         <label for="noteTitle">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
