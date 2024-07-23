@@ -21,7 +21,7 @@ form.addEventListener('submit', (e) => e.preventDefault());
 titleInput.addEventListener('invalid', (e) => {
     e.target.setCustomValidity('');
 
-    if (!e.target.validity.valid) {
+    if (e.target.validity.valueMissing) {
         e.target.setCustomValidity('Wajib diisi.');
         return;
     };
@@ -30,7 +30,7 @@ titleInput.addEventListener('invalid', (e) => {
 descInput.addEventListener('invalid', (e) => {
     e.target.setCustomValidity('');
 
-    if (!e.target.validity.valid) {
+    if (e.target.validity.valueMissing) {
         e.target.setCustomValidity('Wajib diisi.');
         return;
     };
