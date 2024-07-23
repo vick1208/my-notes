@@ -17,7 +17,7 @@ main {
 }
 
 
-/* .add-info{
+.add-info{
     font-size: 8px;
 }
 
@@ -70,7 +70,7 @@ button#saveBtn:hover {
     background-color: #a8e776;
     transition: 300ms ease-in;
     
-} */
+}
 
 
 section.note{

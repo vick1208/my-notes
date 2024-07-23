@@ -38,25 +38,8 @@ class NoteList extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.addEventListener('save-data',this.handleSaveNote.bind(this));
     }
 
-    disconnectedCallback(){
-        this.removeEventListener('save-data',this.handleSaveNote);
-    }
-
-    handleSaveNote(e){
-        console.log(e);
-        const newData = e.detail
-        this.addNoteToList(newData)
-        this.render()
-    }
-    addNoteToList(newNote){
-        if (!this.note) {
-            this.note = []
-        }
-        this.note.push(newNote)
-    }
 
     render() {
         this._emptyContent();

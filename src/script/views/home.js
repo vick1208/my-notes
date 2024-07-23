@@ -10,6 +10,7 @@ function home() {
         const result = NotesData.getAll();
         displayResult(result);
 
+        showNoteList();
     }
 
     function displayResult(notes) {
@@ -19,7 +20,16 @@ function home() {
 
             return noteItemElement;
         });
+
+        Utils.emptyElement(noteListElement);
         noteListElement.append(...noteItemElements);
+    }
+
+    function showNoteList() {
+        Array.from(noteListContainerElement.children).forEach((element) => {
+            Utils.hideElement(element);
+        });
+        Utils.showElement(noteListElement);
     }
 
     showPersonalNote();
