@@ -2,12 +2,15 @@ class AppBar extends HTMLElement {
     _shadowRoot = null;
     _style = null;
 
+    static observedAttributes = ['app-title'];
 
     constructor() {
         super();
 
         this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._style = document.createElement('style');
+
+        this._appTitle = this.getAttribute('app-title');
     }
 
     _emptyContent() {
@@ -49,7 +52,7 @@ class AppBar extends HTMLElement {
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
             <div>
-                <h1 class="logo-brand">Note Pribadi</h1>
+                <h1 class="logo-brand"> ${this._appTitle} </h1>
             </div>
         `;
     }
