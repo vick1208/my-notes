@@ -19,7 +19,6 @@ function home() {
 
             return noteItemElement;
         });
-        Utils.emptyElement(noteListElement);
         noteListElement.append(...noteItemElements);
     }
 

@@ -12,7 +12,7 @@ class FormSection extends HTMLElement {
         this._titleContent = this.getAttribute('title-content');
     }
 
-    _updateStyle(){
+    _updateStyle() {
         this._style.textContent = `
         .add-info{
             font-size: 8px;
@@ -70,15 +70,48 @@ class FormSection extends HTMLElement {
         this._shadowRoot.innerHTML = '';
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.render();
+        this._shadowRoot.querySelector('#notesForm').addEventListener('submit',this.formSubmit.bind(this));
+    }
+
+    formSubmit(event) {
+        event.preventDefault();
+
+        const title = this._shadowRoot.querySelector('#noteTitle').value;
+        const body = this._shadowRoot.querySelector('#noteBody').value;
+        const currentDate = new Date()
+        const formVal = {
+            id: this.generateRandom(),
+            title: title,
+            body: body,
+            createdAt: currentDate.toISOString(),
+            archived: false
+        }
+        this.dispatchEvent(new CustomEvent('save-data', { detail: formVal }));
+    }
+
+    generateRandom(){
+        let result = 'notes-'
+        const huruf = 'abcdefghijklmnopqrstuvwxyz'
+        for(let i=1; i<=3; i++){
+            result += i
+            for(let j=0; j<1; j++){
+                const randomHuruf = huruf.charAt(Math.floor(Math.random() * huruf.length))
+                result += randomHuruf
+            }
+            if (i<3) {
+                result += '-'
+            }
+        }
+        return result
     }
 
     render() {
         this._emptyContent();
         this._updateStyle();
         this._shadowRoot.appendChild(this._style);
-        this._shadowRoot.innerHTML +=`
+        this._shadowRoot.innerHTML += `
         <section class="form-section">
                 <h2> ${this._titleContent} </h2>
                 <form action="#" class="notes-form" id="notesForm">
@@ -103,4 +136,4 @@ class FormSection extends HTMLElement {
     }
 }
 
-customElements.define('form-section',FormSection);
+customElements.define('form-section', FormSection);

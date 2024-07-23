@@ -76,10 +76,10 @@ class NoteItem extends HTMLElement {
 
         let noteContent = this._note.body;
 
-        if (noteContent.includes('\n')) {
-            const lines = noteContent.split('\n');
-            noteContent = lines.map((line) => `<p> ${line} </p>`).join('');
-        }
+        // if (noteContent.includes('\n')) {
+        //     const lines = noteContent.split('\n');
+        //     noteContent = lines.map((line) => `<p> ${line} </p>`).join('');
+        // }
 
 
         this._shadowRoot.appendChild(this._style);
