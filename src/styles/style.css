@@ -68,7 +68,7 @@ button#saveBtn {
 button#saveBtn:hover {
     
     background-color: #a8e776;
-    transition: 300ms ease-in;
+    transition: 400ms ease-in;
     
 }
 

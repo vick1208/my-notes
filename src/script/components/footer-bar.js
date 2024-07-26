@@ -4,11 +4,15 @@ class FooterBar extends HTMLElement {
     _style = null;
 
 
+    static observedAttributes = ['footer-title']
+
     constructor() {
         super();
 
         this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._style = document.createElement('style');
+
+        this._footerTitle = this.getAttribute('footer-title');
     }
     _emptyContent() {
         this._shadowRoot.innerHTML = '';
@@ -72,7 +76,7 @@ class FooterBar extends HTMLElement {
         this._shadowRoot.innerHTML += `
 
         <div class="container">
-            <div class="brand-footer">Note Pribadi</div>
+            <div class="brand-footer">${this._footerTitle}</div>
             <div class="second-footer">Dicoding Project &copy; ${currentYear} Vicky </div>
         </div>
 
