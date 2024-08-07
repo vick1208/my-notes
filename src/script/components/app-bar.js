@@ -11,6 +11,7 @@ class AppBar extends HTMLElement {
         this._style = document.createElement('style');
 
         this._headerTitle = this.getAttribute('header-title');
+        this._bgColor = this.getAttribute('bg-color');
     }
 
     _emptyContent() {
@@ -21,7 +22,7 @@ class AppBar extends HTMLElement {
         this._style.textContent = `
             :host {
                 display: block;              
-                background-color: #F3FEB8;
+                background-color: ${this._bgColor};
                 color: #18182a;
             }
 

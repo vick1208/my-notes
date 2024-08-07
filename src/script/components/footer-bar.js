@@ -13,6 +13,7 @@ class FooterBar extends HTMLElement {
         this._style = document.createElement('style');
 
         this._footerTitle = this.getAttribute('footer-title');
+        this._bgColor = this.getAttribute('bg-color');
     }
     _emptyContent() {
         this._shadowRoot.innerHTML = '';
@@ -35,6 +36,10 @@ class FooterBar extends HTMLElement {
             font-weight: 700;
             color: #18182a;        
         }
+
+    footer {
+    background-color: ${this._bgColor};
+    }
             
         .second-footer {
             font-size: 12px;
@@ -75,11 +80,13 @@ class FooterBar extends HTMLElement {
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
 
-        <div class="container">
-            <div class="brand-footer">${this._footerTitle}</div>
-            <div class="second-footer">Dicoding Project &copy; ${currentYear} Vicky </div>
-        </div>
-
+        <footer>
+            <div class="container">
+                <div class="brand-footer">${this._footerTitle}</div>
+                <div class="second-footer">Dicoding Project &copy; ${currentYear} Vicky </div>
+            </div>
+        </footer>
+        
         `;
     }
 }

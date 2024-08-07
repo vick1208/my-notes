@@ -6,6 +6,8 @@ function home() {
     const noteListContainerElement = document.querySelector('#noteListContainer');
     const noteListElement = noteListContainerElement.querySelector('note-list');
 
+    
+
     const showPersonalNote = () => {
         const result = NotesData.getAll();
         displayResult(result);
