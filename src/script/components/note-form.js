@@ -25,14 +25,18 @@ class NoteForm extends HTMLElement {
 }
 
 section.form-section {
-    margin: 12px 32px ;
+    margin: 1.75rem 2rem ;
+    padding: 2.4rem;
+    background-color: #F5F5F5;
+    border: 1px solid black;
+    border-radius: 14px;
 }
 
 section.form-section h2 {
     text-align: center;
-    font-size: 32px;
+    font-size: 2rem;
     color: #597E52;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 div.form-group {
@@ -47,7 +51,11 @@ div.form-group input,
 textarea {
     border: 1px solid #416D19;
     border-radius: 8px;
-    padding: 12px;
+    padding: 1rem;
+}
+
+div.form-group textarea{
+    resize: none;
 }
 
 div.form-group>label {

@@ -13,7 +13,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 4em;
+    margin: 2rem;
 }
 
 
@@ -21,9 +21,17 @@ main {
 /* section class note */
 
 section.note .title-notes>h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #597E52;
     margin-top: 1em;
     margin-bottom: 1rem;
 
+}
+
+@media screen and(min-width: 640px){
+    section.note .title-notes>h2 {
+        font-size: 0.75rem;
+        
+    
+    }
 }
