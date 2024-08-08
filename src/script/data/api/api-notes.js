@@ -8,7 +8,7 @@ class NotesApi {
       const response = await fetch(`${BASE_URL}/notes`);
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError('failed to fetch all notes');
+        Utils.showResponseError("failed to fetch all notes");
       }
       const unarchived = responseJson.data.filter(
         (note) => note.archived !== true
@@ -30,8 +30,7 @@ class NotesApi {
       const response = await fetch(`${BASE_URL}/notes/archived`);
       const responseJson = await response.json();
       if (responseJson.error) {
-
-        Utils.showResponseError('failed to fetch all notes');
+        Utils.showResponseError("failed to fetch all notes");
       }
       const archived = responseJson.data.filter(
         (note) => note.archived === true
@@ -57,7 +56,6 @@ class NotesApi {
       });
       const responseJson = await response.json();
       if (responseJson.error) {
-        
         Utils.showResponseError(`failed to add :${responseJson.message}`);
       }
       return responseJson;
@@ -65,17 +63,16 @@ class NotesApi {
       return Promise.reject(error);
     }
   }
-  
+
   static async deleteNote(noteId) {
     const options = {
       method: "DELETE",
     };
-    
+
     try {
       const response = await fetch(`${BASE_URL}/notes/${noteId}`, options);
       const responseJson = await response.json();
       if (responseJson.error) {
-        
         Utils.showResponseError("failed to delete note");
       }
       return responseJson;
@@ -85,5 +82,4 @@ class NotesApi {
   }
 }
 
-
-export default NotesApi
+export default NotesApi;

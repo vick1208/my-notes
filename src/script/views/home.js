@@ -2,7 +2,6 @@ import NotesApi from "../data/api/api-notes.js";
 import Utils from "../utils.js";
 
 function home() {
-
   const noteListContainerElement = document.querySelector("#noteListContainer");
   const noteListElement = noteListContainerElement.querySelector("note-list");
   // const formElement = document.querySelector("#notesForm");
@@ -11,12 +10,12 @@ function home() {
   const showNotes = async () => {
     Utils.emptyElement(noteListElement);
     try {
-      const notes = await NotesApi.getAllNotes()
+      const notes = await NotesApi.getAllNotes();
       displayNotesResult(notes);
     } catch (error) {
       Utils.showResponseError(error);
-    } 
-  }
+    }
+  };
 
   function displayNotesResult(notes) {
     const noteItemElements = notes.map((note) => {
