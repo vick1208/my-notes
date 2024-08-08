@@ -16,8 +16,8 @@ main {
     margin: 2rem;
 }
 
-/* form css */
-.add-info{
+/* form css local*/
+/* .add-info{
     font-size: 8px;
 }
 
@@ -78,7 +78,7 @@ button#saveBtn:hover {
 background-color: #a8e776;
 transition: 400ms ease-in;
 
-}
+} */
 
 
 /* section class note */
