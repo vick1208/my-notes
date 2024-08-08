@@ -20,11 +20,11 @@ class NoteItem extends HTMLElement {
     this._shadowRoot.innerHTML = "";
   }
 
-  get noteItem() {
-    return this._noteItem;
+  get note() {
+    return this._note;
   }
 
-  set noteItem(value) {
+  set note(value) {
     this._note = value;
     this.render();
 

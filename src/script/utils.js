@@ -7,7 +7,7 @@ class Utils {
     return `notes-${randomString}-${timestamp}`;
   }
 
-  static showResponseError(message = "Error"){
+  static showResponseError(message = "Check your internet connection"){
     Swal.fire({
       icon: 'error',
       title: "Uh oh",

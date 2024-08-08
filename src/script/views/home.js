@@ -1,22 +1,27 @@
+import NotesApi from "../data/api/api-notes.js";
 import Utils from "../utils.js";
-import NotesData from "../data/local/notesData.js";
 
 function home() {
-  NotesData.initCheck();
+
   const noteListContainerElement = document.querySelector("#noteListContainer");
   const noteListElement = noteListContainerElement.querySelector("note-list");
   // const formElement = document.querySelector("#notesForm");
   const formElement = document.querySelector("note-form");
 
-  const showPersonalNote = () => {
-    const result = NotesData.getAllNotes();
-    displayResult(result);
-  };
+  const showNotes = async () => {
+    Utils.emptyElement(noteListElement);
+    try {
+      const notes = await NotesApi.getAllNotes()
+      displayNotesResult(notes);
+    } catch (error) {
+      Utils.showResponseError(error);
+    } 
+  }
 
-  function displayResult(notes) {
+  function displayNotesResult(notes) {
     const noteItemElements = notes.map((note) => {
       const noteItemElement = document.createElement("note-item");
-      noteItemElement.noteItem = note;
+      noteItemElement.note = note;
 
       return noteItemElement;
     });
@@ -27,12 +32,8 @@ function home() {
 
   formElement.addEventListener("submit", (e) => {
     e.preventDefault();
-    const { title, body } = e.detail;
-    const newNote = {
-      title: title,
-      body: body,
-    };
-    console.log(newNote);
+    const detail = e.detail;
+    console.log(detail);
   });
 
   // light DOM element form
@@ -44,7 +45,8 @@ function home() {
   //     showPersonalNote();
   // });
 
-  showPersonalNote();
+  // showPersonalNote();
+  showNotes();
 }
 
 export default home;
