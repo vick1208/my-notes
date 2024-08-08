@@ -87,47 +87,47 @@ button#saveBtn:hover {
         `;
     }
 
-    // connectedCallback(){
-    //     this._shadowRoot.querySelector('form').addEventListener('submit',this.#onFormSubmit.bind(this));
-    // }
-    // disconnectedCallback(){
-    //     this._shadowRoot.querySelector('form').removeEventListener('submit',this.#onFormSubmit.bind(this));
-    // }
+    connectedCallback(){
+        this._shadowRoot.querySelector('form').addEventListener('submit',this.#onFormSubmit.bind(this));
+    }
+    disconnectedCallback(){
+        this._shadowRoot.querySelector('form').removeEventListener('submit',this.#onFormSubmit.bind(this));
+    }
 
-    // #onFormSubmit(ev){
-    //     ev.preventDefault();
-    //     const inputTitle = this._shadowRoot.querySelector('#noteTitle');
-    //     const inputBody = this._shadowRoot.querySelector('#noteBody');
-    //     if (!inputBody.value||!inputTitle.value) {
-    //         alert('Title dan content harus diisi');
-    //         return;
-    //     }
+    #onFormSubmit(ev){
+        ev.preventDefault();
+        const inputTitle = this._shadowRoot.querySelector('#noteTitle');
+        const inputBody = this._shadowRoot.querySelector('#noteBody');
+        if (!inputBody.value||!inputTitle.value) {
+            alert('Title dan content harus diisi');
+            return;
+        }
 
-    //     const evDetail = {
-    //         id: this.genUniqueId(),
-    //         title: inputTitle.value,
-    //         body: inputBody.value,
-    //         createdAt: new Date().toISOString(),
-    //         archived: false,
-    //     }
+        const evDetail = {
+            id: this.genUniqueId(),
+            title: inputTitle.value,
+            body: inputBody.value,
+            createdAt: new Date().toISOString(),
+            archived: false,
+        }
 
-    //     this.dispatchEvent(
-    //         new CustomEvent('submit',{
-    //             detail: evDetail,
-    //             bubbles: true,
-    //         }),
-    //     );
+        this.dispatchEvent(
+            new CustomEvent('submit',{
+                detail: evDetail,
+                bubbles: true,
+            }),
+        );
 
-    // }
+    }
 
 
-    // genUniqueId(){
-    //     const timestamp = Date.now().toString();
-    //     const randomString = Math.random().toString(36).substring(2,16);
+    genUniqueId(){
+        const timestamp = Date.now().toString();
+        const randomString = Math.random().toString(36).substring(2,16);
 
-    //     return `notes-${randomString}-${timestamp}`;
+        return `notes-${randomString}-${timestamp}`;
 
-    // }
+    }
 
     render(){
         this._emptyContent();
