@@ -38,9 +38,12 @@ function home() {
         body: body,
       };
 
-      await NotesApi.addNote(newNote);
+      const responseNote = await NotesApi.addNote(newNote);
 
-      await showNotes();
+      if (responseNote) {
+        // await showNotes();
+        location.reload();
+      }
     } catch (error) {
       Utils.showResponseError(error);
     }

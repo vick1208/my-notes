@@ -57,14 +57,15 @@ class NotesApi {
       const responseJson = await response.json();
       if (responseJson.error) {
         Utils.showResponseError(`failed to add :${responseJson.message}`);
+      } else {
+        await Swal.fire({
+          icon: "success",
+          text: "Added new note",
+          timer: 3000,
+          showConfirmButton: false,
+        });
+        return responseJson;
       }
-      await Swal.fire({
-        icon: "success",
-        text: "Added new note",
-        timer: 3000,
-        showConfirmButton: false,
-      });
-      return responseJson;
     } catch (error) {
       return Promise.reject(error);
     }
