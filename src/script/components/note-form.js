@@ -2,6 +2,8 @@ class NoteForm extends HTMLElement {
     _shadowRoot = null;
     _style = null;
 
+    _eventSubmit = 'submit';
+
     constructor() {
         super();
 
@@ -21,8 +23,8 @@ class NoteForm extends HTMLElement {
                 display: block;
             }
             .add-info{
-    font-size: 8px;
-}
+                font-size: 8px;
+            }
 
 section.form-section {
     margin: 1.75rem 2rem ;
@@ -85,6 +87,47 @@ button#saveBtn:hover {
         `;
     }
 
+    connectedCallback(){
+        this._shadowRoot.querySelector('form').addEventListener('submit',this.#onFormSubmit.bind(this));
+    }
+    disconnectedCallback(){
+        this._shadowRoot.querySelector('form').removeEventListener('submit',this.#onFormSubmit.bind(this));
+    }
+
+    #onFormSubmit(ev){
+        ev.preventDefault();
+        const inputTitle = this._shadowRoot.querySelector('#noteTitle');
+        const inputBody = this._shadowRoot.querySelector('#noteBody');
+        if (!inputBody.value||!inputTitle.value) {
+            alert('Title dan content harus diisi');
+            return;
+        }
+
+        const evDetail = {
+            id: this.genUniqueId(),
+            title: inputTitle.value,
+            body: inputBody.value,
+            createdAt: new Date().toISOString(),
+            archived: false,
+        }
+
+        this.dispatchEvent(
+            new CustomEvent('submit',{
+                detail: evDetail,
+                bubbles: true,
+            }),
+        );
+
+    }
+
+
+    genUniqueId(){
+        const timestamp = Date.now().toString();
+        const randomString = Math.random().toString(36).substring(2,16);
+
+        return `notes-${randomString}-${timestamp}`;
+
+    }
 
     render(){
         this._emptyContent();
@@ -94,14 +137,14 @@ button#saveBtn:hover {
         this._shadowRoot.innerHTML += `
         <section class="form-section">
                 <h2>Catatan Baru</h2>
-                <form action="#" class="notes-form" id="notesForm">
+                <form class="notes-form" id="notesForm">
                     <div class="form-group">
                         <label for="noteTitle">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
                         <input type="text" name="noteTitle" id="noteTitle" required autocomplete="off" />
                     </div>
                     <div class="form-group">
-                        <label for="noteBody">Catatan</label>
-                        <textarea name="noteBody" id="noteBody" cols="20" rows="8" required></textarea>
+                        <label for="noteBody">Catatan <span class="add-info">&lpar;required&rpar;</span> </label>
+                        <textarea name="noteBody" id="noteBody" cols="30" rows="5" required></textarea>
                     </div>
                     <button type="submit" id="saveBtn">Tambah</button>
                 </form>
