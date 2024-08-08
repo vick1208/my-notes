@@ -1,19 +1,18 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
 }
 
 /* form css local*/
@@ -80,21 +79,17 @@ transition: 400ms ease-in;
 
 } */
 
-
 /* section class note */
 
-section.note .title-notes>h2 {
-    font-size: 2rem;
-    color: #597E52;
-    margin-top: 1em;
-    margin-bottom: 1rem;
-
+section.note .title-notes > h2 {
+  font-size: 2rem;
+  color: #597e52;
+  margin-top: 1em;
+  margin-bottom: 1rem;
 }
 
-@media screen and(min-width: 640px){
-    section.note .title-notes>h2 {
-        font-size: 0.75rem;
-        
-    
-    }
+@media screen and(min-width: 640px) {
+  section.note .title-notes > h2 {
+    font-size: 0.75rem;
+  }
 }

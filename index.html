@@ -1,28 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aplikasi Note</title>
 
-    <link rel="shortcut icon" href="./src/public/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./src/styles/style.css">
-</head>
+    <link
+      rel="shortcut icon"
+      href="./src/public/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <app-bar header-title="Note Pribadi" bg-color="#84CC16"></app-bar>
+      <app-bar header-title="Note Pribadi" bg-color="#84CC16"></app-bar>
     </header>
 
     <main>
-        <note-form></note-form>
+      <note-form></note-form>
 
-        <!-- light DOM element form -->
-        <!-- <section class="form-section">
+      <!-- light DOM element form -->
+      <!-- <section class="form-section">
             <h2>Catatan Baru</h2>
             <form class="notes-form" id="notesForm">
                 <div class="form-group">
@@ -37,22 +43,18 @@
             </form>
         </section> -->
 
-        <section id="note" class="note">
-            <div class="title-notes">
-                <h2>Daftar Catatan</h2>
-            </div>
-            <div id="noteListContainer" class="note-list-container">
-                <note-list></note-list>
-            </div>
-        </section>
-
+      <section id="note" class="note">
+        <div class="title-notes">
+          <h2>Daftar Catatan</h2>
+        </div>
+        <div id="noteListContainer" class="note-list-container">
+          <note-list></note-list>
+        </div>
+      </section>
     </main>
 
     <footer-bar footer-title="Note Pribadi" bg-color="#84CC16"></footer-bar>
 
-
     <script type="module" src="./src/app.js"></script>
-
-</body>
-
+  </body>
 </html>

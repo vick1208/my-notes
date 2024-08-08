@@ -2,7 +2,7 @@
 
 ## Deskripsi
 
-Dicoding Class Module - Belajar Fundamental Front-End Web Development  
+Dicoding Class Module - Belajar Fundamental Front-End Web Development
 
 Project Awal  
 Progress Kelas: 99% Selesai

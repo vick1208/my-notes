@@ -1,25 +1,25 @@
 class AppBar extends HTMLElement {
-    _shadowRoot = null;
-    _style = null;
+  _shadowRoot = null;
+  _style = null;
 
-    static observedAttributes = ['header-title'];
+  static observedAttributes = ["header-title"];
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._style = document.createElement('style');
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._style = document.createElement("style");
 
-        this._headerTitle = this.getAttribute('header-title');
-        this._bgColor = this.getAttribute('bg-color');
-    }
+    this._headerTitle = this.getAttribute("header-title");
+    this._bgColor = this.getAttribute("bg-color");
+  }
 
-    _emptyContent() {
-        this._shadowRoot.innerHTML = '';
-    }
+  _emptyContent() {
+    this._shadowRoot.innerHTML = "";
+  }
 
-    _updateStyle() {
-        this._style.textContent = `
+  _updateStyle() {
+    this._style.textContent = `
             :host {
                 display: block;              
                 background-color: ${this._bgColor};
@@ -41,23 +41,22 @@ class AppBar extends HTMLElement {
             }
 
         `;
-    }
-    connectedCallback() {
-        this.render();
-    }
+  }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this._emptyContent();
-        this._updateStyle();
+  render() {
+    this._emptyContent();
+    this._updateStyle();
 
-        this._shadowRoot.appendChild(this._style);
-        this._shadowRoot.innerHTML += `
+    this._shadowRoot.appendChild(this._style);
+    this._shadowRoot.innerHTML += `
             <div>
                 <h1 class="logo-brand"> ${this._headerTitle} </h1>
             </div>
         `;
-    }
-
+  }
 }
 
-customElements.define('app-bar', AppBar);
+customElements.define("app-bar", AppBar);

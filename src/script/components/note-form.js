@@ -1,24 +1,24 @@
 class NoteForm extends HTMLElement {
-    _shadowRoot = null;
-    _style = null;
+  _shadowRoot = null;
+  _style = null;
 
-    // _eventSubmit = 'submit';
+  // _eventSubmit = 'submit';
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._style = document.createElement('style');
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._style = document.createElement("style");
 
-        this.render();
-    }
+    this.render();
+  }
 
-    _emptyContent() {
-        this._shadowRoot.innerHTML = '';
-    }
+  _emptyContent() {
+    this._shadowRoot.innerHTML = "";
+  }
 
-    _updateStyle() {
-        this._style.textContent = `
+  _updateStyle() {
+    this._style.textContent = `
             :host{
                 display: block;
             }
@@ -85,56 +85,57 @@ button#saveBtn:hover {
     
 }
         `;
+  }
+
+  connectedCallback() {
+    this._shadowRoot
+      .querySelector("form")
+      .addEventListener("submit", this.#onFormSubmit.bind(this));
+  }
+  disconnectedCallback() {
+    this._shadowRoot
+      .querySelector("form")
+      .removeEventListener("submit", this.#onFormSubmit.bind(this));
+  }
+
+  #onFormSubmit(ev) {
+    ev.preventDefault();
+    const inputTitle = this._shadowRoot.querySelector("#noteTitle");
+    const inputBody = this._shadowRoot.querySelector("#noteBody");
+    if (!inputBody.value || !inputTitle.value) {
+      alert("Title dan content harus diisi");
+      return;
     }
 
-    connectedCallback(){
-        this._shadowRoot.querySelector('form').addEventListener('submit',this.#onFormSubmit.bind(this));
-    }
-    disconnectedCallback(){
-        this._shadowRoot.querySelector('form').removeEventListener('submit',this.#onFormSubmit.bind(this));
-    }
+    const evDetail = {
+      id: this.genUniqueId(),
+      title: inputTitle.value,
+      body: inputBody.value,
+      createdAt: new Date().toISOString(),
+      archived: false,
+    };
 
-    #onFormSubmit(ev){
-        ev.preventDefault();
-        const inputTitle = this._shadowRoot.querySelector('#noteTitle');
-        const inputBody = this._shadowRoot.querySelector('#noteBody');
-        if (!inputBody.value||!inputTitle.value) {
-            alert('Title dan content harus diisi');
-            return;
-        }
+    this.dispatchEvent(
+      new CustomEvent("submit", {
+        detail: evDetail,
+        bubbles: true,
+      })
+    );
+  }
 
-        const evDetail = {
-            id: this.genUniqueId(),
-            title: inputTitle.value,
-            body: inputBody.value,
-            createdAt: new Date().toISOString(),
-            archived: false,
-        }
+  genUniqueId() {
+    const timestamp = Date.now().toString();
+    const randomString = Math.random().toString(36).substring(2, 16);
 
-        this.dispatchEvent(
-            new CustomEvent('submit',{
-                detail: evDetail,
-                bubbles: true,
-            }),
-        );
+    return `notes-${randomString}-${timestamp}`;
+  }
 
-    }
+  render() {
+    this._emptyContent();
+    this._updateStyle();
 
-
-    genUniqueId(){
-        const timestamp = Date.now().toString();
-        const randomString = Math.random().toString(36).substring(2,16);
-
-        return `notes-${randomString}-${timestamp}`;
-
-    }
-
-    render(){
-        this._emptyContent();
-        this._updateStyle();
-
-        this._shadowRoot.appendChild(this._style);
-        this._shadowRoot.innerHTML += `
+    this._shadowRoot.appendChild(this._style);
+    this._shadowRoot.innerHTML += `
         <section class="form-section">
                 <h2>Catatan Baru</h2>
                 <form class="notes-form" id="notesForm">
@@ -149,8 +150,8 @@ button#saveBtn:hover {
                     <button type="submit" id="saveBtn">Tambah</button>
                 </form>
             </section>
-        `; 
-    }
+        `;
+  }
 }
 
-customElements.define('note-form',NoteForm);
+customElements.define("note-form", NoteForm);

@@ -1,38 +1,38 @@
 class NoteItem extends HTMLElement {
-    _shadowRoot = null;
-    _style = null;
-    _note = {
-        id: null,
-        title: null,
-        body: null,
-        createdAt: null,
-        archived: false
-    }
+  _shadowRoot = null;
+  _style = null;
+  _note = {
+    id: null,
+    title: null,
+    body: null,
+    createdAt: null,
+    archived: false,
+  };
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this._shadowRoot = this.attachShadow({ mode: "open" });
-        this._style = document.createElement('style');
-    }
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._style = document.createElement("style");
+  }
 
-    _emptyContent() {
-        this._shadowRoot.innerHTML = '';
-    }
+  _emptyContent() {
+    this._shadowRoot.innerHTML = "";
+  }
 
-    get noteItem() {
-        return this._noteItem;
-    }
+  get noteItem() {
+    return this._noteItem;
+  }
 
-    set noteItem(value) {
-        this._note = value;
-        this.render();
+  set noteItem(value) {
+    this._note = value;
+    this.render();
 
-        // console.log(this._note);
-    }
+    // console.log(this._note);
+  }
 
-    _updateStyle() {
-        this._style.textContent = `
+  _updateStyle() {
+    this._style.textContent = `
         
         :host{
         display: block;
@@ -66,31 +66,27 @@ class NoteItem extends HTMLElement {
         
 
         `;
+  }
+
+  render() {
+    this._emptyContent();
+    this._updateStyle();
+
+    let noteContent = this._note.body;
+
+    if (noteContent.includes("\n")) {
+      const lines = noteContent.split("\n");
+      noteContent = lines.map((line) => `<p> ${line} </p>`).join("");
     }
 
-
-
-    render() {
-        this._emptyContent();
-        this._updateStyle();
-
-        let noteContent = this._note.body;
-
-        if (noteContent.includes('\n')) {
-            const lines = noteContent.split('\n');
-            noteContent = lines.map((line) => `<p> ${line} </p>`).join('');
-        }
-
-
-        this._shadowRoot.appendChild(this._style);
-        this._shadowRoot.innerHTML += `
+    this._shadowRoot.appendChild(this._style);
+    this._shadowRoot.innerHTML += `
         <div class="card">
             <h3 id="noteTitle"> ${this._note.title} </h3>
             <p id="noteTitle"> ${noteContent} </p>
         </div>
         `;
-
-    }
+  }
 }
 
-customElements.define('note-item', NoteItem);
+customElements.define("note-item", NoteItem);

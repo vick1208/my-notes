@@ -1,26 +1,24 @@
 class FooterBar extends HTMLElement {
+  _shadowRoot = null;
+  _style = null;
 
-    _shadowRoot = null;
-    _style = null;
+  static observedAttributes = ["footer-title"];
 
+  constructor() {
+    super();
 
-    static observedAttributes = ['footer-title']
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._style = document.createElement("style");
 
-    constructor() {
-        super();
+    this._footerTitle = this.getAttribute("footer-title");
+    this._bgColor = this.getAttribute("bg-color");
+  }
+  _emptyContent() {
+    this._shadowRoot.innerHTML = "";
+  }
 
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._style = document.createElement('style');
-
-        this._footerTitle = this.getAttribute('footer-title');
-        this._bgColor = this.getAttribute('bg-color');
-    }
-    _emptyContent() {
-        this._shadowRoot.innerHTML = '';
-    }
-
-    _updateStyle(){
-        this._style.textContent = `
+  _updateStyle() {
+    this._style.textContent = `
         :host{
             display: block;
         }
@@ -64,21 +62,20 @@ class FooterBar extends HTMLElement {
             
             }
         `;
-    }
+  }
 
+  connectedCallback() {
+    this.render();
+  }
 
-    connectedCallback(){
-        this.render();
-    }
+  render() {
+    this._emptyContent();
+    this._updateStyle();
 
-    render(){
-        this._emptyContent();
-        this._updateStyle();
+    const currentYear = new Date().getFullYear();
 
-        const currentYear = new Date().getFullYear();
-
-        this._shadowRoot.appendChild(this._style);
-        this._shadowRoot.innerHTML += `
+    this._shadowRoot.appendChild(this._style);
+    this._shadowRoot.innerHTML += `
 
         <footer>
             <div class="container">
@@ -88,7 +85,7 @@ class FooterBar extends HTMLElement {
         </footer>
         
         `;
-    }
+  }
 }
 
-customElements.define('footer-bar', FooterBar);
+customElements.define("footer-bar", FooterBar);
