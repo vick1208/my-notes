@@ -7,13 +7,7 @@
   <title>Aplikasi Note</title>
 
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    /> -->
-  <!-- <link rel="stylesheet" href="./src/styles/style.css" /> -->
+  
 </head>
 
 <body>
@@ -24,22 +18,7 @@
   <main>
     <note-form></note-form>
 
-    <!-- light DOM element form -->
-    <!-- <section class="form-section">
-            <h2>Catatan Baru</h2>
-            <form class="notes-form" id="notesForm">
-                <div class="form-group">
-                    <label for="noteTitle">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
-                    <input type="text" name="noteTitle" id="noteTitle" required autocomplete="off" />
-                </div>
-                <div class="form-group">
-                    <label for="noteBody">Catatan <span class="add-info">&lpar;required&rpar;</span> </label>
-                    <textarea name="noteBody" id="noteBody" cols="30" rows="5" required></textarea>
-                </div>
-                <button type="submit" id="saveBtn">Tambah</button>
-            </form>
-        </section> -->
-
+    
     <section id="note" class="note">
       <div class="title-notes">
         <h2>Daftar Catatan</h2>
@@ -47,7 +26,15 @@
       <div id="noteListContainer" class="note-list-container">
         <note-list></note-list>
       </div>
+      <div class="title-notes">
+        <h2>Daftar Arsip Catatan</h2>
+      </div>
+      <div id="noteArchivedListContainer">
+        <!-- Disini diisi note list -->
+      </div>
     </section>
+
+    
   </main>
 
   <footer-bar footer-title="Note Pribadi" bg-color="#84CC16"></footer-bar>

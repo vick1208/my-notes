@@ -1,3 +1,5 @@
+import Utils from "../utils";
+
 class NoteItem extends HTMLElement {
   _shadowRoot = null;
   _style = null;
@@ -35,37 +37,50 @@ class NoteItem extends HTMLElement {
     this._style.textContent = `
         
         :host{
-        display: block;
+        display: flex;
+        flex-direction: row;
+        overflow:hidden;
         }
 
         div.card{
-            height: 150px;
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
+            display:flex;
+            flex-direction: column;
+            padding: 1.25rem;
+            border: 1px solid black;
+            border-radius: 10px;
             overflow: hidden;
-
+            width: 100%;
         }
 
-        h3#noteTitle {
-            margin-bottom: 6px;
-            font-weight: 700;
-            color: #597E52;
+        .note-content{
+          flex-grow: 1;
         }
 
-        div#noteDesc {
-            margin-top: 2px;
-            font-size: 15px;
-            color: #77B0BB;
-        }
 
-        div#notesDesc p {
-            margin: 0;
-            padding: 0;
-        }
         
 
-        `;
+        .note-content__title {
+        font-size: clamp(16px, 3vw, 20px);
+        padding-bottom: 10px;
+        border-bottom: 1px solid #092639;
+        overflow: hidden;
+        color: #597E52;
+        text-overflow: ellipsis;
+        margin: auto;
+        white-space: nowrap;
+      }
+
+      .note-content__body {
+        font-size: clamp(14px, 3vw, 16px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .note-content__date{
+        font-size: clamp(12px,3vw,14px);
+      }
+    
+    `;
   }
 
   render() {
@@ -82,8 +97,11 @@ class NoteItem extends HTMLElement {
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
         <div class="card">
-            <h3 id="noteTitle"> ${this._note.title} </h3>
-            <p id="noteTitle"> ${noteContent} </p>
+          <div class="note-content">
+            <h3 class="note-content__title"> ${this._note.title} </h3>
+            <p class="note-content__body"> ${noteContent} </p>
+            <p class="note-content__date"> ${Utils.formattedDate(this._note.createdAt)} </p>
+          </div>
         </div>
         `;
   }

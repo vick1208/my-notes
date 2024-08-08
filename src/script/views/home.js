@@ -29,10 +29,21 @@ function home() {
     noteListElement.append(...noteItemElements);
   }
 
-  formElement.addEventListener("submit", (e) => {
+  formElement.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const detail = e.detail;
-    console.log(detail);
+    const { title, body } = e.detail;
+    try {
+      const newNote = {
+        title: title,
+        body: body,
+      };
+
+      await NotesApi.addNote(newNote);
+
+      await showNotes();
+    } catch (error) {
+      Utils.showResponseError(error);
+    }
   });
 
   // light DOM element form

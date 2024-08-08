@@ -1,5 +1,5 @@
 import Utils from "../../utils";
-
+import Swal from "sweetalert2";
 const BASE_URL = "https://notes-api.dicoding.dev/v2";
 
 class NotesApi {
@@ -58,6 +58,12 @@ class NotesApi {
       if (responseJson.error) {
         Utils.showResponseError(`failed to add :${responseJson.message}`);
       }
+      await Swal.fire({
+        icon: "success",
+        text: "Added new note",
+        timer: 3000,
+        showConfirmButton: false,
+      });
       return responseJson;
     } catch (error) {
       return Promise.reject(error);

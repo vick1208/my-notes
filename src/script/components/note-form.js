@@ -58,6 +58,7 @@ textarea {
 
 div.form-group textarea{
     resize: none;
+    font-family: "Inter",sans-serif;
 }
 
 div.form-group>label {
@@ -141,11 +142,11 @@ button#saveBtn:hover {
                 <form class="notes-form" id="notesForm">
                     <div class="form-group">
                         <label for="noteTitle">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
-                        <input type="text" name="noteTitle" id="noteTitle" required autocomplete="off" />
+                        <input type="text" name="noteTitle" id="noteTitle" required placeholder="Judul catatanmu" autocomplete="off" />
                     </div>
                     <div class="form-group">
                         <label for="noteBody">Catatan <span class="add-info">&lpar;required&rpar;</span> </label>
-                        <textarea name="noteBody" id="noteBody" cols="30" rows="5" required></textarea>
+                        <textarea name="noteBody" id="noteBody" cols="25" rows="5" placeholder="Isi catatanmu" required></textarea>
                     </div>
                     <button type="submit" id="saveBtn">Tambah</button>
                 </form>

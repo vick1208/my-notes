@@ -1,12 +1,6 @@
 import Swal from "sweetalert2";
 
 class Utils {
-  static uniqueId() {
-    const timestamp = Date.now().toString();
-    const randomString = Math.random().toString(36).substring(2, 8);
-    return `notes-${randomString}-${timestamp}`;
-  }
-
   static showResponseError(message = "Check your internet connection") {
     Swal.fire({
       icon: "error",
@@ -26,6 +20,16 @@ class Utils {
   static hideElement(element) {
     element.style.display = "none";
     element.hidden = true;
+  }
+
+  static formattedDate(date) {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    };
+    return new Date(date).toLocaleDateString("id-ID", options);
   }
 }
 
