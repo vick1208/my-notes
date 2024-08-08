@@ -60,7 +60,7 @@ class NoteItem extends HTMLElement {
         
 
         .note-content__title {
-        font-size: clamp(16px, 3vw, 20px);
+        font-size: clamp(17px, 3vw, 21px);
         padding-bottom: 10px;
         border-bottom: 1px solid #092639;
         overflow: hidden;
@@ -77,7 +77,7 @@ class NoteItem extends HTMLElement {
       }
 
       .note-content__date{
-        font-size: clamp(12px,3vw,14px);
+        font-size: clamp(9px,3vw,10px);
       }
     
     `;
@@ -101,6 +101,10 @@ class NoteItem extends HTMLElement {
             <h3 class="note-content__title"> ${this._note.title} </h3>
             <p class="note-content__body"> ${noteContent} </p>
             <p class="note-content__date"> ${Utils.formattedDate(this._note.createdAt)} </p>
+          </div>
+          <div class="note-btn">
+            <button id="deleteButton" class="note-btn__delete">Delete</button>
+            <button id="archiveButton" class="note-btn__archive">${this._note.archived ? "Unarchive" : "Archive"}</button>
           </div>
         </div>
         `;
