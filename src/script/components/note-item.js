@@ -2,11 +2,11 @@ class NoteItem extends HTMLElement {
     _shadowRoot = null;
     _style = null;
     _note = {
-        idNote: null,
+        id: null,
         title: null,
         body: null,
         createdAt: null,
-        archived: null
+        archived: false
     }
 
     constructor() {
@@ -20,11 +20,11 @@ class NoteItem extends HTMLElement {
         this._shadowRoot.innerHTML = '';
     }
 
-    get note() {
-        return this._note;
+    get noteItem() {
+        return this._noteItem;
     }
 
-    set note(value) {
+    set noteItem(value) {
         this._note = value;
         this.render();
 

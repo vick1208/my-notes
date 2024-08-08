@@ -3,22 +3,24 @@ import NotesData from '../data/local/notesData.js'
 
 
 function home() {
+
+    NotesData.initCheck();
     const noteListContainerElement = document.querySelector('#noteListContainer');
     const noteListElement = noteListContainerElement.querySelector('note-list');
-
+    const formElement = document.querySelector("#notesForm");
     
 
     const showPersonalNote = () => {
-        const result = NotesData.getAll();
+        const result = NotesData.getAllNotes();
         displayResult(result);
 
-        showNoteList();
+        
     }
 
     function displayResult(notes) {
         const noteItemElements = notes.map((note) => {
             const noteItemElement = document.createElement('note-item');
-            noteItemElement.note = note;
+            noteItemElement.noteItem = note;
 
             return noteItemElement;
         });
@@ -27,12 +29,13 @@ function home() {
         noteListElement.append(...noteItemElements);
     }
 
-    function showNoteList() {
-        Array.from(noteListContainerElement.children).forEach((element) => {
-            Utils.hideElement(element);
-        });
-        Utils.showElement(noteListElement);
-    }
+    formElement.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const title = document.querySelector('#noteTitle').value;
+        const body = document.querySelector('#noteBody').value;
+        NotesData.addNotes(title,body);
+        showPersonalNote();
+    });
 
     showPersonalNote();
 
