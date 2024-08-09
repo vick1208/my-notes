@@ -1,12 +1,11 @@
 class LoaderIndicator extends HTMLElement {
+  _shadowRoot = null;
 
-    _shadowRoot = null;
+  constructor() {
+    super();
 
-    constructor() {
-        super();
-        
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._shadowRoot.innerHTML += `
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._shadowRoot.innerHTML += `
         <style>
         .loader {
   width: 60px;
@@ -30,10 +29,8 @@ class LoaderIndicator extends HTMLElement {
 
         <div class="loader"></div>
         
-        `
-
-    }
-
+        `;
+  }
 }
 
-customElements.define('loader-indicator', LoaderIndicator);
+customElements.define("loader-indicator", LoaderIndicator);

@@ -2,7 +2,7 @@ class NoteForm extends HTMLElement {
   _shadowRoot = null;
   _style = null;
 
-  _eventSubmit = 'submit';
+  _eventSubmit = "submit";
 
   constructor() {
     super();
@@ -23,7 +23,7 @@ class NoteForm extends HTMLElement {
                 display: block;
             }
             .add-info{
-                font-size: 8px;
+                font-size: clamp(9px,3vw,10px);
             }
 
 section.form-section {
@@ -61,6 +61,7 @@ div.form-group textarea{
     font-family: "Inter",sans-serif;
 }
 
+
 div.form-group>label {
     margin-bottom: 8px;
     color: #597E52;
@@ -79,35 +80,43 @@ button#saveBtn {
     font-weight: bold;
     cursor: pointer;
 }
-button#saveBtn:hover {
-    
-    background-color: #a8e776;
-    transition: 400ms ease-in;
-    
+
+button#saveBtn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
 }
-        `;
+
+
+`;
   }
 
   connectedCallback() {
-    this._shadowRoot
-      .querySelector("form")
-      .addEventListener("submit", this.#onFormSubmit.bind(this));
+    const form = this._shadowRoot.querySelector("form");
+    const titleInput = this._shadowRoot.querySelector("#noteTitle");
+    const bodyInput = this._shadowRoot.querySelector("#noteBody");
+    const subBtn = this._shadowRoot.querySelector("#saveBtn");
+
+    form.addEventListener("input", () => {
+      subBtn.disabled = !(titleInput.value && bodyInput.value);
+    });
+
+    form.addEventListener("submit", this.#onFormSubmit.bind(this));
   }
   disconnectedCallback() {
-    this._shadowRoot
-      .querySelector("form")
-      .removeEventListener("submit", this.#onFormSubmit.bind(this));
+    const form = this._shadowRoot.querySelector("form");
+    form.removeEventListener("submit", this.#onFormSubmit.bind(this));
   }
 
-  #onFormSubmit(ev) {
-    ev.preventDefault();
-    const inputTitle = this._shadowRoot.querySelector("#noteTitle");
-    const inputBody = this._shadowRoot.querySelector("#noteBody");
+  #onFormSubmit(event) {
+    event.preventDefault();
+    const inputTitleSubmit = this._shadowRoot.querySelector("#noteTitle");
+    const inputBodySubmit = this._shadowRoot.querySelector("#noteBody");
+    const submitButton = this._shadowRoot.querySelector("#saveBtn");
 
     const evDetail = {
       id: this.genUniqueId(),
-      title: inputTitle.value,
-      body: inputBody.value,
+      title: inputTitleSubmit.value,
+      body: inputBodySubmit.value,
       createdAt: new Date().toISOString(),
       archived: false,
     };
@@ -118,6 +127,9 @@ button#saveBtn:hover {
         bubbles: true,
       })
     );
+    inputTitleSubmit.value = "";
+    inputBodySubmit.value = "";
+    submitButton.disabled = true;
   }
 
   genUniqueId() {
@@ -134,16 +146,16 @@ button#saveBtn:hover {
     this._shadowRoot.innerHTML += `
         <section class="form-section">
                 <h2>Catatan Baru</h2>
-                <form class="notes-form" id="notesForm">
+                <form class="notes-form" id="notesForm" autocomplete="off">
                     <div class="form-group">
-                        <label for="noteTitle">Judul <span class="add-info">&lpar;required&rpar;</span> </label>
-                        <input type="text" name="noteTitle" id="noteTitle" required placeholder="Judul catatanmu" autocomplete="off" />
+                        <label for="noteTitle">Judul</label>
+                        <input type="text" name="noteTitle" id="noteTitle" required placeholder="Judul catatanmu" minlength="4" maxlength="20"/> 
                     </div>
                     <div class="form-group">
-                        <label for="noteBody">Catatan <span class="add-info">&lpar;required&rpar;</span> </label>
-                        <textarea name="noteBody" id="noteBody" cols="25" rows="5" placeholder="Isi catatanmu" required></textarea>
+                        <label for="noteBody">Isi Catatan</label>
+                        <textarea name="noteBody" id="noteBody" cols="25" rows="5" placeholder="Isi catatanmu" required minlength="10" maxlength="150"></textarea>
                     </div>
-                    <button type="submit" id="saveBtn">Tambah</button>
+                    <button type="submit" id="saveBtn" disabled>Tambah</button>
                 </form>
             </section>
         `;

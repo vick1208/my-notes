@@ -6,17 +6,18 @@ function home() {
     "#noteUnarcContainer"
   );
   const noteListElement = noteListContainerElement.querySelector("note-list");
-  const noteLoadingIndicator = document.querySelector('#noteUnarcContainer loader-indicator');
-  const paragraphNoteFallback = document.querySelector('#noteUnarcContainer .fallback');
+  const noteLoadingIndicator = document.querySelector(
+    "#noteUnarcContainer loader-indicator"
+  );
 
-  
   const archiveNoteListContainerElement = document.querySelector(
     "#noteArchivedListContainer"
   );
   const archiveNoteListElement =
-  archiveNoteListContainerElement.querySelector("note-list");
-  const archiveNoteLoadingIndicator = document.querySelector('#noteArchivedListContainer loader-indicator');
-  const paragraphArchiveFallback = document.querySelector('#noteArchivedListContainer .fallback')
+    archiveNoteListContainerElement.querySelector("note-list");
+  const archiveNoteLoadingIndicator = document.querySelector(
+    "#noteArchivedListContainer loader-indicator"
+  );
 
   // console.log(archiveNoteListElement);
 
@@ -41,15 +42,13 @@ function home() {
     try {
       const notes = await NotesApi.getAllNotes();
       if (notes.length > 0) {
-        // console.info(notes);
         displayNotesResult(notes);
-
       } else {
-        Utils.showElement(paragraphNoteFallback);
+        Utils.hideElement(noteListContainerElement);
       }
     } catch (error) {
       Utils.showResponseError(error);
-    } finally{
+    } finally {
       Utils.hideElement(noteLoadingIndicator);
     }
   };
@@ -68,25 +67,23 @@ function home() {
   }
 
   const showArchiveNotes = async () => {
-    
     Utils.showElement(archiveNoteLoadingIndicator);
 
     try {
       const notes = await NotesApi.getAllArchiveNotes();
       if (notes.length > 0) {
-        displayArchiveResult(notes); 
+        displayArchiveResult(notes);
       } else {
-        console.info("No notes available");
-        Utils.showElement(paragraphArchiveFallback);
+        Utils.hideElement(archiveNoteListContainerElement);
       }
     } catch (error) {
       Utils.showResponseError(error);
-    }finally{
+    } finally {
       Utils.hideElement(archiveNoteLoadingIndicator);
     }
   };
 
-  // tombol add note
+  // submit form event
   formElement.addEventListener("submit", async (e) => {
     e.preventDefault();
     const { title, body } = e.detail;
@@ -99,6 +96,7 @@ function home() {
       await NotesApi.addNote(newNote);
 
       await showNotes();
+      await showArchiveNotes();
     } catch (error) {
       Utils.showResponseError(error);
     }
