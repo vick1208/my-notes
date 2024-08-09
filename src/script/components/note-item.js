@@ -45,36 +45,35 @@ class NoteItem extends HTMLElement {
       showCancelButton: true,
       confirmButtonText: "Delete",
       confirmButtonColor: "#ff6969",
-    }).then((response)=>{
+    }).then((response) => {
       if (response.isConfirmed) {
         this.dispatchEvent(
           new CustomEvent("deleteNote", {
             detail: { noteId: this._note.id },
             bubbles: true,
           })
-        )  
+        );
       }
     });
-    
   }
 
   #onArchiveBtn() {
-      Swal.fire({
-        title: "Archive Toggle Note",
-        text: "Are you sure to move this note?",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonText: "Move",
-      }).then((response)=>{
-        if (response.isConfirmed) {
-          this.dispatchEvent(
-            new CustomEvent("archiveNote",{
-              detail: this._note,
-              bubbles: true
-            })
-          );
-        }
-      });
+    Swal.fire({
+      title: "Archive Toggle Note",
+      text: "Are you sure to move this note?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Move",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        this.dispatchEvent(
+          new CustomEvent("archiveNote", {
+            detail: this._note,
+            bubbles: true,
+          })
+        );
+      }
+    });
   }
 
   _emptyContent() {
@@ -181,7 +180,6 @@ class NoteItem extends HTMLElement {
   render() {
     this._emptyContent();
     this._updateStyle();
-
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `

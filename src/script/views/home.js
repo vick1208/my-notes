@@ -2,11 +2,16 @@ import NotesApi from "../data/api/api-notes.js";
 import Utils from "../utils.js";
 
 function home() {
-  const noteListContainerElement = document.querySelector("#noteUnarcContainer");
+  const noteListContainerElement = document.querySelector(
+    "#noteUnarcContainer"
+  );
   const noteListElement = noteListContainerElement.querySelector("note-list");
 
-  const archiveNoteListContainerElement = document.querySelector("#noteArchivedListContainer");
-  const archiveNoteListElement = archiveNoteListContainerElement.querySelector("note-list");
+  const archiveNoteListContainerElement = document.querySelector(
+    "#noteArchivedListContainer"
+  );
+  const archiveNoteListElement =
+    archiveNoteListContainerElement.querySelector("note-list");
 
   // console.log(archiveNoteListElement);
 
@@ -32,7 +37,6 @@ function home() {
       if (notes.length > 0) {
         // console.info(notes);
         displayNotesResult(notes);
-        
       } else {
         console.info("No notes available");
       }
@@ -41,13 +45,11 @@ function home() {
     }
   };
 
-
   function displayArchiveResult(notes) {
     const archiveNoteItems = notes.map((note) => {
       const archiveNoteItem = document.createElement("note-item");
       archiveNoteItem.note = note;
-      archiveNoteItem.setAttribute('id-note',note.id);
-
+      archiveNoteItem.setAttribute("id-note", note.id);
 
       return archiveNoteItem;
     });
@@ -82,10 +84,7 @@ function home() {
 
       await NotesApi.addNote(newNote);
 
-    
       await showNotes();
-
-      
     } catch (error) {
       Utils.showResponseError(error);
     }
@@ -136,7 +135,7 @@ function home() {
       );
       if (noteItem) {
         noteItem.note.archived = true;
-        
+
         await NotesApi.moveToArchivedNote(note);
         await showNotes();
         await showArchiveNotes();

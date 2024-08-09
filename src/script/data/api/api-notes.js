@@ -33,13 +33,11 @@ class NotesApi {
 
       const archive = responseJson.data;
 
-
       if (archive.length > 0) {
-        return archive
+        return archive;
       } else {
         return [];
       }
-
     } catch (error) {
       return Promise.reject(error);
     }
@@ -83,7 +81,6 @@ class NotesApi {
         );
       }
 
-      
       Utils.showResponseConfirm("Note deleted");
     } catch (error) {
       return Promise.reject(error);
@@ -107,10 +104,9 @@ class NotesApi {
           `Failed to unarchive note: ${responseJson.message}`
         );
       }
-      
+
       Utils.showResponseConfirm("Note unarchived");
       return responseJson;
-
     } catch (error) {
       return Promise.reject(error);
     }
@@ -131,7 +127,7 @@ class NotesApi {
           `Failed to archive note: ${responseJson.message}`
         );
       }
-      
+
       Utils.showResponseConfirm("Note archived");
       return responseJson;
     } catch (error) {

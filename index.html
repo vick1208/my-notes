@@ -1,46 +1,37 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi Note</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aplikasi Note</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  
-</head>
+  <body>
+    <header>
+      <app-bar header-title="Note Pribadi" bg-color="#84CC16"></app-bar>
+    </header>
 
-<body>
-  <header>
-    <app-bar header-title="Note Pribadi" bg-color="#84CC16"></app-bar>
-  </header>
+    <main>
+      <note-form></note-form>
 
-  <main>
-    <note-form></note-form>
+      <section class="note">
+        <div class="title-notes">
+          <h2>Daftar Catatan</h2>
+        </div>
+        <div id="noteUnarcContainer" class="note-list-container">
+          <note-list></note-list>
+        </div>
+        <div class="title-notes">
+          <h2>Daftar Arsip Catatan</h2>
+        </div>
+        <div id="noteArchivedListContainer" class="note-list-container">
+          <note-list></note-list>
+        </div>
+      </section>
+    </main>
 
-    
-    <section class="note">
-      <div class="title-notes">
-        <h2>Daftar Catatan</h2>
-      </div>
-      <div id="noteUnarcContainer" class="note-list-container">
-        <note-list></note-list>
-      </div>
-      <div class="title-notes">
-        <h2>Daftar Arsip Catatan</h2>
-      </div>
-      <div id="noteArchivedListContainer" class="note-list-container">
-        <note-list></note-list>
-      </div>
-    </section>
-
-    
-    
-    
-  </main>
-
-  <footer-bar footer-title="Note Pribadi" bg-color="#84CC16"></footer-bar>
-
-</body>
-
+    <footer-bar footer-title="Note Pribadi" bg-color="#84CC16"></footer-bar>
+  </body>
 </html>
