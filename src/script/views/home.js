@@ -44,7 +44,7 @@ function home() {
       if (notes.length > 0) {
         displayNotesResult(notes);
       } else {
-        Utils.hideElement(noteListContainerElement);
+        console.info("No notes available");
       }
     } catch (error) {
       Utils.showResponseError(error);
@@ -74,7 +74,7 @@ function home() {
       if (notes.length > 0) {
         displayArchiveResult(notes);
       } else {
-        Utils.hideElement(archiveNoteListContainerElement);
+        console.info(`No archive notes available`);
       }
     } catch (error) {
       Utils.showResponseError(error);
