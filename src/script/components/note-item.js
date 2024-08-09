@@ -37,41 +37,44 @@ class NoteItem extends HTMLElement {
       .removeEventListener("click", this.#onArchiveBtn.bind(this));
   }
 
-  async #onDeleteBtn() {
-    const confirmed = await Swal.fire({
+  #onDeleteBtn() {
+    Swal.fire({
       title: "Delete Note",
       text: "Are you sure to delete this note?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Delete",
       confirmButtonColor: "#ff6969",
+    }).then((response)=>{
+      if (response.isConfirmed) {
+        this.dispatchEvent(
+          new CustomEvent("deleteNote", {
+            detail: { noteId: this._note.id },
+            bubbles: true,
+          })
+        )  
+      }
     });
-    if (confirmed) {
-      this.dispatchEvent(
-        new CustomEvent("deleteNote", {
-          detail: { noteId: this._note.id },
-          bubbles: true,
-        })
-      );
-    }
+    
   }
 
-  async #onArchiveBtn() {
-    const confirmed = await Swal.fire({
-      title: "Archive Toggle Note",
-      text: "Are you sure to move this note?",
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonText: "Move",
-    });
-    if (confirmed) {
-      this.dispatchEvent(
-        new CustomEvent("archiveNote", {
-          detail: this._note,
-          bubbles: true,
-        })
-      );
-    }
+  #onArchiveBtn() {
+      Swal.fire({
+        title: "Archive Toggle Note",
+        text: "Are you sure to move this note?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Move",
+      }).then((response)=>{
+        if (response.isConfirmed) {
+          this.dispatchEvent(
+            new CustomEvent("archiveNote",{
+              detail: this._note,
+              bubbles: true
+            })
+          );
+        }
+      });
   }
 
   _emptyContent() {

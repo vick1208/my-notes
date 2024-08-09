@@ -84,6 +84,8 @@ class NotesApi {
           `Failed to delete note: ${responseJson.message}`
         );
       }
+
+      
       Utils.showResponseConfirm("Note deleted");
     } catch (error) {
       return Promise.reject(error);
@@ -106,10 +108,11 @@ class NotesApi {
         Utils.showResponseError(
           `Failed to unarchive note: ${responseJson.message}`
         );
-      } else {
-        Utils.showResponseConfirm("Note unarchived");
-        return responseJson;
       }
+      
+      Utils.showResponseConfirm("Note unarchived");
+      return responseJson;
+
     } catch (error) {
       return Promise.reject(error);
     }
@@ -129,10 +132,10 @@ class NotesApi {
         Utils.showResponseError(
           `Failed to archive note: ${responseJson.message}`
         );
-      } else {
-        Utils.showResponseConfirm("Note archived");
-        return responseJson;
       }
+      
+      Utils.showResponseConfirm("Note archived");
+      return responseJson;
     } catch (error) {
       return Promise.reject(error);
     }
