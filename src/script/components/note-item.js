@@ -9,7 +9,7 @@ class NoteItem extends HTMLElement {
     title: null,
     body: null,
     createdAt: null,
-    archived: false,
+    archived: null,
   };
 
   constructor() {

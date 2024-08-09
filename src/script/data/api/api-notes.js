@@ -27,7 +27,7 @@ class NotesApi {
 
   static async getAllArchiveNotes() {
     try {
-      const response = await fetch(`${BASE_URL}/notes/archived`);
+      const response = await fetch(`${BASE_URL}/notes`);
       const responseJson = await response.json();
       if (responseJson.error) {
         Utils.showResponseError("Failed to fetch all notes");
@@ -65,6 +65,7 @@ class NotesApi {
           timer: 3000,
           showConfirmButton: false,
         });
+        // return responseJson;
       }
     } catch (error) {
       return Promise.reject(error);
@@ -106,6 +107,7 @@ class NotesApi {
         );
       } else {
         Utils.showResponseConfirm("Note unarchived");
+        return responseJson;
       }
     } catch (error) {
       return Promise.reject(error);
@@ -128,6 +130,7 @@ class NotesApi {
         );
       } else {
         Utils.showResponseConfirm("Note archived");
+        return responseJson;
       }
     } catch (error) {
       return Promise.reject(error);

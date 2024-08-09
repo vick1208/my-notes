@@ -5,11 +5,10 @@ function home() {
   const noteListContainerElement = document.querySelector("#noteListContainer");
   const noteListElement = noteListContainerElement.querySelector("note-list");
 
-  const archiveNoteListContainerElement = document.querySelector(
-    "#noteArchivedListContainer"
-  );
-  const archiveNoteListElement =
-    archiveNoteListContainerElement.querySelector("note-list");
+  const archiveNoteListContainerElement = document.querySelector("#archivedListContainer");
+  const archiveNoteListElement = archiveNoteListContainerElement.querySelector("note-list");
+
+  // console.log(showNotes);
 
   const formElement = document.querySelector("note-form");
 
@@ -26,21 +25,8 @@ function home() {
     noteListElement.append(...noteItemElements);
   }
 
-  function displayArchiveResult(notes) {
-    const archiveNoteItems = notes.map((note) => {
-      const archiveNoteItem = document.createElement("note-item");
-      archiveNoteItem.note = note;
-      archiveNoteItem.setAttribute("id-note", note.id);
-
-      return archiveNoteItem;
-    });
-
-    Utils.emptyElement(archiveNoteListElement);
-    archiveNoteListElement.append(...archiveNoteItems);
-  }
-
   const showNotes = async () => {
-    // Utils.emptyElement(noteListElement);
+    Utils.emptyElement(noteListElement);
     try {
       const notes = await NotesApi.getAllNotes();
       if (notes.length > 0) {
@@ -53,12 +39,26 @@ function home() {
     }
   };
 
+
+  function displayArchiveResult(notes) {
+    const archiveNoteItems = notes.map((note) => {
+      const archiveNoteItem = document.createElement("note-item");
+      archiveNoteItem.note = note;
+      archiveNoteItem.setAttribute("id-note", note.id);
+
+      return archiveNoteItem;
+    });
+
+    Utils.emptyElement(archiveNoteListElement);
+    archiveNoteListElement.append(...archiveNoteItems);
+  }
+  
   const showArchiveNotes = async () => {
-    // Utils.emptyElement(archiveNoteListElement);
+    Utils.emptyElement(archiveNoteListElement);
     try {
-      const notes = await NotesApi.getAllArchiveNotes();
-      if (notes.length > 0) {
-        displayArchiveResult(notes);
+      const arcNotes = await NotesApi.getAllArchiveNotes();
+      if (arcNotes.length > 0) {
+        displayArchiveResult(arcNotes);
       } else {
         console.info("No notes available");
       }
@@ -105,22 +105,58 @@ function home() {
     }
   });
 
-  archiveNoteListElement.addEventListener("deleteNote", async (e) => {
-    const noteId = e.detail.noteId;
+  // archiveNoteListElement.addEventListener("deleteNote", async (e) => {
+  //   const noteId = e.detail.noteId;
+  //   try {
+  //     await NotesApi.deleteNote(noteId);
+  //     const noteItem = archiveNoteListElement.querySelector(
+  //       `note-item[id-note=${noteId}]`
+  //     );
+  //     if (noteItem) {
+  //       noteItem.remove();
+  //     }
+  //     await showNotes();
+  //     await showArchiveNotes();
+  //   } catch (error) {
+  //     Utils.showResponseError(error);
+  //   }
+  // });
+
+  // tombol archive note
+
+  noteListElement.addEventListener("archiveNote", async (e) => {
+    const note = e.detail;
     try {
-      await NotesApi.deleteNote(noteId);
-      const noteItem = archiveNoteListElement.querySelector(
-        `note-item[id-note=${noteId}]`
+      const noteItem = noteListElement.querySelector(
+        `note-item[id-note=${note.id}]`
       );
       if (noteItem) {
-        noteItem.remove();
+        noteItem.note.archived = true;
+        await NotesApi.moveToArchivedNote(note);
+        await showNotes();
+        await showArchiveNotes();
       }
-      await showNotes();
-      await showArchiveNotes();
     } catch (error) {
       Utils.showResponseError(error);
     }
   });
+
+  // archiveNoteListElement.addEventListener("archiveNote", async (e) => {
+  //   const note = e.detail;
+  //   try {
+  //     const noteItem = archiveNoteListElement.querySelector(
+  //       `note-item[id-note=${note.id}]`
+  //     );
+  //     if (noteItem) {
+  //       noteItem.note.archived = false;
+  //       await NotesApi.moveToNote(note);
+  //       await showNotes();
+  //       await showArchiveNotes();
+  //     }
+  //   } catch (error) {
+  //     Utils.showResponseError(error);
+  //   }
+  // });
 
   showNotes();
   showArchiveNotes();
