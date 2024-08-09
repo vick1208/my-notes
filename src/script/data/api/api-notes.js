@@ -56,7 +56,7 @@ class NotesApi {
       });
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError(`failed to add :${responseJson.message}`);
+        Utils.showResponseError(`failed to add: ${responseJson.message}`);
       } else {
         await Swal.fire({
           icon: "success",
@@ -80,9 +80,9 @@ class NotesApi {
       const response = await fetch(`${BASE_URL}/notes/${noteId}`, options);
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError("failed to delete note");
+        Utils.showResponseError(`failed to delete note: ${responseJson.message}`);
       }
-      return responseJson;
+      Utils.showResponseConfirm("Note deleted");
     } catch (error) {
       return Promise.reject(error);
     }

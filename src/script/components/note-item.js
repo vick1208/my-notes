@@ -30,10 +30,9 @@ this._shadowRoot.getElementById('deleteButton').removeEventListener('click', thi
   }
 
   async #onDeleteBtn() {
-    // const confirmed = await Utils.showResponseConfirm('Hapus Note', 'Apakah Anda ingin menghapus note?', "Delete");
     const confirmed = await Swal.fire({
-      title: 'Hapus Note',
-      text: 'Apakah Anda ingin menghapus note?',
+      title: 'Delete Note',
+      text: 'Are you sure to delete this note?',
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Delete",
@@ -50,11 +49,10 @@ this._shadowRoot.getElementById('deleteButton').removeEventListener('click', thi
   }
 
   async #onArchiveBtn() {
-    // const confirmed = await Utils.showResponseConfirm("","Apakah Anda ingin memindahkan note?","Move");
     const confirmed = await Swal.fire({
-      title: "Arsip Note",
-      text: "Apakah Anda ingin memindahkan note?",
-      icon: "warning",
+      title: "Archive Toggle Note",
+      text: "Are you sure to move this note?",
+      icon: "question",
       showCancelButton: true,
       confirmButtonText: "Move",
       

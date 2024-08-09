@@ -9,13 +9,10 @@ class Utils {
     });
   }
 
-  static showResponseConfirm(title,message,btnText){
-    return Swal.fire({
-      title: title,
+  static showResponseConfirm(message){
+    Swal.fire({
       text: message,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: btnText,
+      icon: "success",
     });
   }
 
