@@ -6,12 +6,17 @@ function home() {
     "#noteUnarcContainer"
   );
   const noteListElement = noteListContainerElement.querySelector("note-list");
+  const noteLoadingIndicator = document.querySelector('#noteUnarcContainer loader-indicator');
+  const paragraphNoteFallback = document.querySelector('#noteUnarcContainer .fallback');
 
+  
   const archiveNoteListContainerElement = document.querySelector(
     "#noteArchivedListContainer"
   );
   const archiveNoteListElement =
-    archiveNoteListContainerElement.querySelector("note-list");
+  archiveNoteListContainerElement.querySelector("note-list");
+  const archiveNoteLoadingIndicator = document.querySelector('#noteArchivedListContainer loader-indicator');
+  const paragraphArchiveFallback = document.querySelector('#noteArchivedListContainer .fallback')
 
   // console.log(archiveNoteListElement);
 
@@ -31,17 +36,21 @@ function home() {
   }
 
   const showNotes = async () => {
-    Utils.emptyElement(noteListElement);
+    Utils.showElement(noteLoadingIndicator);
+
     try {
       const notes = await NotesApi.getAllNotes();
       if (notes.length > 0) {
         // console.info(notes);
         displayNotesResult(notes);
+
       } else {
-        console.info("No notes available");
+        Utils.showElement(paragraphNoteFallback);
       }
     } catch (error) {
       Utils.showResponseError(error);
+    } finally{
+      Utils.hideElement(noteLoadingIndicator);
     }
   };
 
@@ -59,16 +68,21 @@ function home() {
   }
 
   const showArchiveNotes = async () => {
-    Utils.emptyElement(archiveNoteListElement);
+    
+    Utils.showElement(archiveNoteLoadingIndicator);
+
     try {
       const notes = await NotesApi.getAllArchiveNotes();
       if (notes.length > 0) {
-        displayArchiveResult(notes);
+        displayArchiveResult(notes); 
       } else {
         console.info("No notes available");
+        Utils.showElement(paragraphArchiveFallback);
       }
     } catch (error) {
       Utils.showResponseError(error);
+    }finally{
+      Utils.hideElement(archiveNoteLoadingIndicator);
     }
   };
 

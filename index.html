@@ -14,20 +14,27 @@
     </header>
 
     <main>
+      
       <note-form></note-form>
-
+      
       <section class="note">
         <div class="title-notes">
           <h2>Daftar Catatan</h2>
         </div>
         <div id="noteUnarcContainer" class="note-list-container">
+          <loader-indicator></loader-indicator>
+          <p class="fallback">Tidak ada catatan baru</p>
           <note-list></note-list>
+
         </div>
         <div class="title-notes">
           <h2>Daftar Arsip Catatan</h2>
         </div>
         <div id="noteArchivedListContainer" class="note-list-container">
+          <loader-indicator></loader-indicator>
+          <p class="fallback">Tidak ada catatan baru </p>
           <note-list></note-list>
+
         </div>
       </section>
     </main>
