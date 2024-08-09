@@ -27,20 +27,21 @@ class NotesApi {
 
   static async getAllArchiveNotes() {
     try {
-      const response = await fetch(`${BASE_URL}/notes`);
+      const response = await fetch(`${BASE_URL}/notes/archived`);
       const responseJson = await response.json();
       if (responseJson.error) {
         Utils.showResponseError("Failed to fetch all notes");
       }
-      const archived = responseJson.data.filter(
-        (note) => note.archived === true
-      );
-      if (archived > 0) {
-        console.info(archived);
-        return archived;
+
+      const archive = responseJson.data;
+
+
+      if (archive.length > 0) {
+        return archive
       } else {
         return [];
       }
+
     } catch (error) {
       return Promise.reject(error);
     }

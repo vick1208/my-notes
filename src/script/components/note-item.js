@@ -179,19 +179,13 @@ class NoteItem extends HTMLElement {
     this._emptyContent();
     this._updateStyle();
 
-    let noteContent = this._note.body;
-
-    if (noteContent.includes("\n")) {
-      const lines = noteContent.split("\n");
-      noteContent = lines.map((line) => `<p> ${line} </p>`).join("");
-    }
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
         <div class="card">
           <div class="note-content">
             <h3 class="note-content__title"> ${this._note.title} </h3>
-            <p class="note-content__body"> ${noteContent} </p>
+            <p class="note-content__body"> ${this._note.body} </p>
             <p class="note-content__date"> ${Utils.formattedDate(this._note.createdAt)} </p>
           </div>
           <div class="note-btn">

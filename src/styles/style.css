@@ -83,7 +83,7 @@ transition: 400ms ease-in;
 
 /* section class note */
 
-section.note .title-notes > h2 {
+.note .title-notes > h2 {
   font-size: 2rem;
   color: #597e52;
   margin-top: 1em;
@@ -91,7 +91,7 @@ section.note .title-notes > h2 {
 }
 
 @media screen and(min-width: 640px) {
-  section.note .title-notes > h2 {
+  .note .title-notes > h2 {
     font-size: 0.75rem;
   }
 }
