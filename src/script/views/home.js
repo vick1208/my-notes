@@ -4,7 +4,6 @@ import Utils from "../utils.js";
 function home() {
   const noteListContainerElement = document.querySelector("#noteListContainer");
   const noteListElement = noteListContainerElement.querySelector("note-list");
-  // const formElement = document.querySelector("#notesForm");
   const formElement = document.querySelector("note-form");
 
   const showNotes = async () => {
@@ -49,16 +48,6 @@ function home() {
     }
   });
 
-  // light DOM element form
-  // formElement.addEventListener("submit",(e)=>{
-  //     e.preventDefault();
-  //     const title = document.querySelector('#noteTitle').value;
-  //     const body = document.querySelector('#noteBody').value;
-  //     NotesData.addNotes(title,body);
-  //     showPersonalNote();
-  // });
-
-  // showPersonalNote();
   showNotes();
 }
 

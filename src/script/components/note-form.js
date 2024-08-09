@@ -103,10 +103,7 @@ button#saveBtn:hover {
     ev.preventDefault();
     const inputTitle = this._shadowRoot.querySelector("#noteTitle");
     const inputBody = this._shadowRoot.querySelector("#noteBody");
-    if (!inputBody.value || !inputTitle.value) {
-      alert("Title dan content harus diisi");
-      return;
-    }
+    
 
     const evDetail = {
       id: this.genUniqueId(),
@@ -125,10 +122,9 @@ button#saveBtn:hover {
   }
 
   genUniqueId() {
-    const timestamp = Date.now().toString();
     const randomString = Math.random().toString(36).substring(2, 16);
 
-    return `notes-${randomString}-${timestamp}`;
+    return `notes-${randomString}`;
   }
 
   render() {

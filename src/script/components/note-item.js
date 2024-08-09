@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import Utils from "../utils";
 
 class NoteItem extends HTMLElement {
@@ -18,6 +19,56 @@ class NoteItem extends HTMLElement {
     this._style = document.createElement("style");
   }
 
+  connectedCallback() {
+    this._shadowRoot.getElementById('deleteButton').addEventListener('click', this.#onDeleteBtn.bind(this))
+    this._shadowRoot.getElementById('archiveButton').addEventListener('click', this.#onArchiveBtn.bind(this));
+  }
+
+  disconnectedCallback() {
+this._shadowRoot.getElementById('deleteButton').removeEventListener('click', this.#onDeleteBtn.bind(this));
+this._shadowRoot.getElementById('deleteButton').removeEventListener('click', this.#onArchiveBtn.bind(this));
+  }
+
+  async #onDeleteBtn() {
+    // const confirmed = await Utils.showResponseConfirm('Hapus Note', 'Apakah Anda ingin menghapus note?', "Delete");
+    const confirmed = await Swal.fire({
+      title: 'Hapus Note',
+      text: 'Apakah Anda ingin menghapus note?',
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      confirmButtonColor: "#ff6969"
+    });
+    if (confirmed) {
+      this.dispatchEvent(
+        new CustomEvent('deleteNote', {
+          detail: { noteId: this._note.id },
+          bubbles: true
+        })
+      )
+    }
+  }
+
+  async #onArchiveBtn() {
+    // const confirmed = await Utils.showResponseConfirm("","Apakah Anda ingin memindahkan note?","Move");
+    const confirmed = await Swal.fire({
+      title: "Arsip Note",
+      text: "Apakah Anda ingin memindahkan note?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Move",
+      
+    });
+    if (confirmed) {
+      this.dispatchEvent(
+        new CustomEvent('archiveNote', {
+          detail: this._note,
+          bubbles: true
+        })
+      )
+    }
+  }
+
   _emptyContent() {
     this._shadowRoot.innerHTML = "";
   }
@@ -33,12 +84,13 @@ class NoteItem extends HTMLElement {
     // console.log(this._note);
   }
 
+
+
   _updateStyle() {
     this._style.textContent = `
         
         :host{
         display: flex;
-        flex-direction: row;
         overflow:hidden;
         }
 
@@ -62,7 +114,7 @@ class NoteItem extends HTMLElement {
         .note-content__title {
         font-size: clamp(17px, 3vw, 21px);
         padding-bottom: 10px;
-        border-bottom: 1px solid #092639;
+        border-bottom: 1px solid #36454F;
         overflow: hidden;
         color: #597E52;
         text-overflow: ellipsis;
@@ -78,6 +130,43 @@ class NoteItem extends HTMLElement {
 
       .note-content__date{
         font-size: clamp(9px,3vw,10px);
+      }
+
+      .note-btn{
+        display: flex;
+        flex-direction: row;
+        gap: 7px;
+        justify-content: space-between;
+      }
+
+      .note-btn > button {
+        display: block;
+        font-weight: bold;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #36454F;
+        margin-top: 1rem;
+        padding: 0.5rem;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .note-btn__delete {
+        background-color: #ff6969;
+        color: white;
+      }
+      
+      .note-btn__delete:hover {
+        background-color: #ff2929;
+      }
+
+      .note-btn__archive {
+        background-color: #FFEA00;
+        color: #36454F;
+      }
+      
+      .note-btn__archive:hover {
+        background-color: #FFCF00;
       }
     
     `;

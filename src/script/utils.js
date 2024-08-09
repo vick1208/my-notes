@@ -9,6 +9,16 @@ class Utils {
     });
   }
 
+  static showResponseConfirm(title,message,btnText){
+    return Swal.fire({
+      title: title,
+      text: message,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: btnText,
+    });
+  }
+
   static emptyElement(element) {
     element.innerHTML = "";
   }
