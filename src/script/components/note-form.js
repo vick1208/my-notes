@@ -2,7 +2,7 @@ class NoteForm extends HTMLElement {
   _shadowRoot = null;
   _style = null;
 
-  // _eventSubmit = 'submit';
+  _eventSubmit = 'submit';
 
   constructor() {
     super();
@@ -113,7 +113,7 @@ button#saveBtn:hover {
     };
 
     this.dispatchEvent(
-      new CustomEvent("submit", {
+      new CustomEvent(this._eventSubmit, {
         detail: evDetail,
         bubbles: true,
       })
