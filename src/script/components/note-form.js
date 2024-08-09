@@ -103,7 +103,6 @@ button#saveBtn:hover {
     ev.preventDefault();
     const inputTitle = this._shadowRoot.querySelector("#noteTitle");
     const inputBody = this._shadowRoot.querySelector("#noteBody");
-    
 
     const evDetail = {
       id: this.genUniqueId(),

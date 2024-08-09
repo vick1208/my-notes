@@ -8,7 +8,7 @@ class NotesApi {
       const response = await fetch(`${BASE_URL}/notes`);
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError("failed to fetch all notes");
+        Utils.showResponseError("Failed to fetch all notes");
       }
       const unarchived = responseJson.data.filter(
         (note) => note.archived !== true
@@ -30,7 +30,7 @@ class NotesApi {
       const response = await fetch(`${BASE_URL}/notes/archived`);
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError("failed to fetch all notes");
+        Utils.showResponseError("Failed to fetch all notes");
       }
       const archived = responseJson.data.filter(
         (note) => note.archived === true
@@ -45,6 +45,7 @@ class NotesApi {
       return Promise.reject(error);
     }
   }
+
   static async addNote(note) {
     try {
       const response = await fetch(`${BASE_URL}/notes`, {
@@ -56,7 +57,7 @@ class NotesApi {
       });
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError(`failed to add: ${responseJson.message}`);
+        Utils.showResponseError(`Failed to add: ${responseJson.message}`);
       } else {
         await Swal.fire({
           icon: "success",
@@ -64,7 +65,6 @@ class NotesApi {
           timer: 3000,
           showConfirmButton: false,
         });
-        return responseJson;
       }
     } catch (error) {
       return Promise.reject(error);
@@ -72,17 +72,63 @@ class NotesApi {
   }
 
   static async deleteNote(noteId) {
-    const options = {
-      method: "DELETE",
-    };
-
     try {
-      const response = await fetch(`${BASE_URL}/notes/${noteId}`, options);
+      const response = await fetch(`${BASE_URL}/notes/${noteId}`, {
+        method: "DELETE",
+      });
       const responseJson = await response.json();
       if (responseJson.error) {
-        Utils.showResponseError(`failed to delete note: ${responseJson.message}`);
+        Utils.showResponseError(
+          `Failed to delete note: ${responseJson.message}`
+        );
       }
       Utils.showResponseConfirm("Note deleted");
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  static async moveToNote(note) {
+    try {
+      const response = await fetch(`${BASE_URL}/notes/${note.id}/unarchive`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(note),
+      });
+
+      const responseJson = await response.json();
+
+      if (responseJson.error) {
+        Utils.showResponseError(
+          `Failed to unarchive note: ${responseJson.message}`
+        );
+      } else {
+        Utils.showResponseConfirm("Note unarchived");
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  static async moveToArchivedNote(note) {
+    try {
+      const response = await fetch(`${BASE_URL}/notes/${note.id}/archive`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(note),
+      });
+      const responseJson = await response.json();
+      if (responseJson.error) {
+        Utils.showResponseError(
+          `Failed to archive note: ${responseJson.message}`
+        );
+      } else {
+        Utils.showResponseConfirm("Note archived");
+      }
     } catch (error) {
       return Promise.reject(error);
     }

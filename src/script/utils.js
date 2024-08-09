@@ -9,7 +9,7 @@ class Utils {
     });
   }
 
-  static showResponseConfirm(message){
+  static showResponseConfirm(message) {
     Swal.fire({
       text: message,
       icon: "success",

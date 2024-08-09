@@ -20,31 +20,39 @@ class NoteItem extends HTMLElement {
   }
 
   connectedCallback() {
-    this._shadowRoot.getElementById('deleteButton').addEventListener('click', this.#onDeleteBtn.bind(this))
-    this._shadowRoot.getElementById('archiveButton').addEventListener('click', this.#onArchiveBtn.bind(this));
+    this._shadowRoot
+      .getElementById("deleteButton")
+      .addEventListener("click", this.#onDeleteBtn.bind(this));
+    this._shadowRoot
+      .getElementById("archiveButton")
+      .addEventListener("click", this.#onArchiveBtn.bind(this));
   }
 
   disconnectedCallback() {
-this._shadowRoot.getElementById('deleteButton').removeEventListener('click', this.#onDeleteBtn.bind(this));
-this._shadowRoot.getElementById('deleteButton').removeEventListener('click', this.#onArchiveBtn.bind(this));
+    this._shadowRoot
+      .getElementById("deleteButton")
+      .removeEventListener("click", this.#onDeleteBtn.bind(this));
+    this._shadowRoot
+      .getElementById("deleteButton")
+      .removeEventListener("click", this.#onArchiveBtn.bind(this));
   }
 
   async #onDeleteBtn() {
     const confirmed = await Swal.fire({
-      title: 'Delete Note',
-      text: 'Are you sure to delete this note?',
+      title: "Delete Note",
+      text: "Are you sure to delete this note?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Delete",
-      confirmButtonColor: "#ff6969"
+      confirmButtonColor: "#ff6969",
     });
     if (confirmed) {
       this.dispatchEvent(
-        new CustomEvent('deleteNote', {
+        new CustomEvent("deleteNote", {
           detail: { noteId: this._note.id },
-          bubbles: true
+          bubbles: true,
         })
-      )
+      );
     }
   }
 
@@ -55,15 +63,14 @@ this._shadowRoot.getElementById('deleteButton').removeEventListener('click', thi
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Move",
-      
     });
     if (confirmed) {
       this.dispatchEvent(
-        new CustomEvent('archiveNote', {
+        new CustomEvent("archiveNote", {
           detail: this._note,
-          bubbles: true
+          bubbles: true,
         })
-      )
+      );
     }
   }
 
@@ -81,8 +88,6 @@ this._shadowRoot.getElementById('deleteButton').removeEventListener('click', thi
 
     // console.log(this._note);
   }
-
-
 
   _updateStyle() {
     this._style.textContent = `
