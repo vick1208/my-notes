@@ -10,9 +10,7 @@ class NotesApi {
       if (responseJson.error) {
         Utils.showResponseError("Failed to fetch all notes");
       }
-      const unarchived = responseJson.data.filter(
-        (note) => note.archived !== true
-      );
+      const unarchived = responseJson.data;
 
       if (unarchived.length > 0) {
         console.info(unarchived);
