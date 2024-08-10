@@ -3,11 +3,11 @@ import Utils from "../utils.js";
 
 function home() {
   const noteListContainerElement = document.querySelector(
-    "#noteUnarcContainer"
+    "#noteContainer"
   );
   const noteListElement = noteListContainerElement.querySelector("note-list");
   const noteLoadingIndicator = document.querySelector(
-    "#noteUnarcContainer loader-indicator"
+    "#noteContainer loader-indicator"
   );
 
   const archiveNoteListContainerElement = document.querySelector(
