@@ -4,5 +4,5 @@
 
 Dicoding Class Module - Belajar Fundamental Front-End Web Development
 
-Project Awal  
-Progress Kelas: 99% Selesai
+Project Akhir API Integration  
+Progress Kelas: 100% Selesai
