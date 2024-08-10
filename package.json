@@ -25,6 +25,7 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "sweetalert2": "^11.12.4"
   }
 }
