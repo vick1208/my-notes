@@ -21,20 +21,24 @@ class AppBar extends HTMLElement {
   _updateStyle() {
     this._style.textContent = `
             :host {
-                display: block;              
+                display: block;                             
                 background-color: ${this._bgColor};
                 color: #18182a;
             }
 
             div {
-                padding: 8px 60px;
+                padding: 1rem 2rem;
             }
+            
 
             .logo-brand{
                 font-size: 2rem;
             }
 
             @media (min-width: 640px){
+                div {
+                padding: 1rem 4rem;
+            }
                 .logo-brand{
                     font-size: 3.4rem;
                 }

@@ -24,13 +24,13 @@ class NoteList extends HTMLElement {
         div.note-list{
             display: grid;
             grid-template-columns: repeat(autofit,minmax(100px,1fr));
-            gap: 15px;
+            gap: 10px;
         }
 
         @media(min-width: 640px){
             div.note-list{
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
             }
         }
 

@@ -19,7 +19,6 @@ function home() {
     "#noteArchivedListContainer loader-indicator"
   );
 
-
   const formElement = document.querySelector("note-form");
 
   function displayNotesResult(notes) {
