@@ -61,7 +61,6 @@ class NotesApi {
           timer: 3000,
           showConfirmButton: false,
         });
-        // return responseJson;
       }
     } catch (error) {
       return Promise.reject(error);
