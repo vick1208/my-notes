@@ -19,7 +19,6 @@ function home() {
     "#noteArchivedListContainer loader-indicator"
   );
 
-  // console.log(archiveNoteListElement);
 
   const formElement = document.querySelector("note-form");
 
@@ -47,7 +46,6 @@ function home() {
       } else {
         console.info("No notes available");
         Utils.hideElement(archiveNoteListContainerElement);
-
       }
     } catch (error) {
       Utils.showResponseError(error);
