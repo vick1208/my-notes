@@ -148,11 +148,11 @@ button#saveBtn:disabled{
                 <h2>Catatan Baru</h2>
                 <form class="notes-form" id="notesForm" autocomplete="off">
                     <div class="form-group">
-                        <label for="noteTitle">Judul</label>
+                        <label for="noteTitle">Judul <span class="add-info">&lpar;wajib&rpar;</span></label>
                         <input type="text" name="noteTitle" id="noteTitle" required placeholder="Judul catatanmu" minlength="4" maxlength="20"/> 
                     </div>
                     <div class="form-group">
-                        <label for="noteBody">Isi Catatan</label>
+                        <label for="noteBody">Isi Catatan<span class="add-info">&lpar;wajib&rpar;</span></label>
                         <textarea name="noteBody" id="noteBody" cols="25" rows="5" placeholder="Isi catatanmu" required minlength="10" maxlength="150"></textarea>
                     </div>
                     <button type="submit" id="saveBtn" disabled>Tambah</button>

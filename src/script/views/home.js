@@ -42,9 +42,12 @@ function home() {
     try {
       const notes = await NotesApi.getAllNotes();
       if (notes.length > 0) {
+        Utils.showElement(archiveNoteListContainerElement);
         displayNotesResult(notes);
       } else {
         console.info("No notes available");
+        Utils.hideElement(archiveNoteListContainerElement);
+
       }
     } catch (error) {
       Utils.showResponseError(error);
@@ -72,9 +75,11 @@ function home() {
     try {
       const notes = await NotesApi.getAllArchiveNotes();
       if (notes.length > 0) {
+        Utils.showElement(archiveNoteListContainerElement);
         displayArchiveResult(notes);
       } else {
         console.info(`No archive notes available`);
+        Utils.hideElement(archiveNoteListContainerElement);
       }
     } catch (error) {
       Utils.showResponseError(error);
@@ -147,7 +152,6 @@ function home() {
       );
       if (noteItem) {
         noteItem.note.archived = true;
-
         await NotesApi.moveToArchivedNote(note);
         await showNotes();
         await showArchiveNotes();

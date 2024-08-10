@@ -13,7 +13,6 @@ class NotesApi {
       const unarchived = responseJson.data;
 
       if (unarchived.length > 0) {
-        console.info(unarchived);
         return unarchived;
       } else {
         return [];
