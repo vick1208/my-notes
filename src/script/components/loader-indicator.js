@@ -28,7 +28,7 @@ class LoaderIndicator extends HTMLElement {
         </style>
 
         <div class="loader"></div>
-        
+        <p> Loading </p>
         `;
   }
 }

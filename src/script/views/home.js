@@ -2,9 +2,7 @@ import NotesApi from "../data/api/api-notes.js";
 import Utils from "../utils.js";
 
 function home() {
-  const noteListContainerElement = document.querySelector(
-    "#noteContainer"
-  );
+  const noteListContainerElement = document.querySelector("#noteContainer");
   const noteListElement = noteListContainerElement.querySelector("note-list");
   const noteLoadingIndicator = document.querySelector(
     "#noteContainer loader-indicator"
