@@ -37,7 +37,7 @@ section.form-section {
 section.form-section h2 {
     text-align: center;
     font-size: 2rem;
-    color: #597E52;
+    color: #10b981;
     margin-bottom: 1.25rem;
 }
 
@@ -51,7 +51,7 @@ div.form-group {
 
 div.form-group input,
 textarea {
-    border: 1px solid #416D19;
+    border: 1px solid #99f6e4;
     border-radius: 8px;
     padding: 1rem;
 }
@@ -64,7 +64,7 @@ div.form-group textarea{
 
 div.form-group>label {
     margin-bottom: 8px;
-    color: #597E52;
+    color: #34d399;
 }
 
 
@@ -73,7 +73,7 @@ button#saveBtn {
     width: 100%;
     margin-top: 20px;
     padding: 14px 16px;
-    background-color: #9BCF53;
+    background-color: #6ee7b7;
     border: 0;
     border-radius: 12px;
     color: white;
