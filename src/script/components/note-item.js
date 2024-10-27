@@ -125,10 +125,11 @@ class NoteItem extends HTMLElement {
         text-overflow: ellipsis;
         margin: auto;
         white-space: nowrap;
-      }
-
+        }
+        
       .note-content__body {
         font-size: clamp(14px, 3vw, 16px);
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
